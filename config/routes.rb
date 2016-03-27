@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  get 'landing_page/index'
+  get 'sessions/new'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'landing_page#index'
+  # root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -55,4 +55,13 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  root                          'landing_page#home'
+  get       '/signup'      =>   'users#new'
+  get       '/show'        =>   'users#id'
+  get       '/login'        =>   'sessions#new'
+  post      '/login'        =>   'sessions#create'
+  delete    '/logout'       =>   'sessions#destroy'
+  resources :users
+
 end
