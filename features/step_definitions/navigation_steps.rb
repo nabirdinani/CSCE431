@@ -84,6 +84,10 @@ Then /^I should be on (.+)$/ do |page_name|
   current_path.should == path_to(page_name)
 end
 
+Then /^I should not be on (.+)$/ do |page_name|
+  path_to(current_path).should != path_to(page_name)
+end
+
 Then /^page should have (.+) message "([^\"]*)"$/ do |type, text|
   page.has_css?("p.#{type}", :text => text, :visible => true)
 end

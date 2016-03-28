@@ -5,7 +5,7 @@ Feature: Login
  
     Scenario: Accepts user login information
         Given I am on the login page
-        And I fill in "session email" with "jasonkrez@tamu.edu"
-        And I fill in "session password" with "password123"
-        When I press "button"
-        Then page should have notice message "Welcome, Jason!"
+        And I fill in "session email" with "tomcat@tom.com"
+        And I fill in "session password" with "password"
+        When I press "login_button"
+        Then I should be on the users page 
