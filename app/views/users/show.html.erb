@@ -1,1 +1,61 @@
-<h1>Welcome, User!</h1>
+<!DOCTYPE html>
+<html>
+ 	<head>
+    	<title>Health4All Auction Site</title>
+    	<%= stylesheet_link_tag 'application', media: 'all',
+                                           'data-turbolinks-track' => true %>
+    	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    	<%= csrf_meta_tags %>
+    	<!--[if lt IE 9]>
+      		<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+      		</script>
+    	<![endif]-->
+  	</head>
+  	<body>
+
+		<h1>Welcome, <%= @user.name %>!</h1>
+
+		<% if logged_in? %>
+	     	<% if !flash[:notice].blank? %>
+			   <div class = "alert alert-info">
+			      <%= flash[:notice] %>
+			   </div>
+			<% end %>
+
+			<br />
+
+			<%= link_to "Submit Artwork for Auction", new_artwork_path, class: "btn btn-primary" %>
+			<br />
+			<br />
+
+			<table class = "table table-bordered table-striped">
+			   <thead>.
+			      <tr>
+			         <th>Name</th>
+			         <th>Download Link</th>
+			         <th>Description</th>
+			         <th> </th>
+			      </tr>
+			   </thead>
+			   
+			   <tbody>
+			      <% @artworks.each do |artwork| %>
+			         
+			         <tr>
+			            <td><%= artwork.name %></td>
+			            <td><%= link_to "Download Artwork", artwork.attachment_url %></td>
+			            <td><%= artwork.description %></td>
+			            <td><%= button_to "Delete",  artwork, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{artwork.name}?" %></td>
+			         </tr>
+			         
+			      <% end %>
+			   </tbody>
+			   
+			</table>
+	  	<% else %>
+	      
+	  	<% end %>    
+
+  	</body>
+
+ </html>
