@@ -13,11 +13,11 @@
 <div class = "well">
    <%= form_for @artwork, html: { multipart: true } do |f| %>
       <%= f.label :name %>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, id: 'name' %>
       <%= f.label :description %>
-      <%= f.text_field :description %>
+      <%= f.text_field :description, id: 'descrip' %>
       <%= f.label :attachment %>
-      <%= f.file_field :attachment %>
-      <%= f.submit "Save", class: "btn btn-primary" %>
+      <%= f.file_field :attachment, id: 'file_field' %>
+      <%= f.submit "Save", id: 'submit_file', class: "btn btn-primary" %>
    <% end %>
 </div>

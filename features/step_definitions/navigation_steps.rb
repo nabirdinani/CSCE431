@@ -100,3 +100,22 @@ Given /^the following users$/ do |table|
       :password => hash[:password])
   end
 end
+
+Given /^the following artworks$/ do |table|
+  table.hashes.each do |hash|
+    Artwork.create(:name => hash[:name],
+      :description => hash[:description],
+      :attachment => hash[:attachment])
+  end
+end
+
+When /^I upload a file$/ do
+  attach_file(:file_field, File.join(File.dirname(__FILE__), "..", "support", "upload-files", "1.jpg"))
+  click_button "submit_file"
+end
+
+When /^I upload a file alternate$/ do
+  attach_file(:file_field, File.join(File.dirname(__FILE__), "..", "support", "upload-files", "2.jpg"))
+  click_button "submit_file"
+end
+ 
