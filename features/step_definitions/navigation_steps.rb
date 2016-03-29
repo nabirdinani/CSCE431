@@ -118,4 +118,9 @@ When /^I upload a file alternate$/ do
   attach_file(:file_field, File.join(File.dirname(__FILE__), "..", "support", "upload-files", "2.jpg"))
   click_button "submit_file"
 end
+
+When /^I upload wrong image file$/ do
+  attach_file(:file_field, File.join(File.dirname(__FILE__), "..", "support", "upload-files", "1.pdf"))
+  click_button "submit_file"
+end
  

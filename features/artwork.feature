@@ -27,6 +27,41 @@ Feature: Upload files to server
         When I upload a file alternate
         Then I should see "The picture test123 has been submitted."
 
+    Scenario: Upload wrong image file
+        Given I am on the artworks page
+        And I fill in "name" with "test123"
+        And I fill in "descrip" with "my picture"
+        When I upload wrong image file
+        Then I should see "Picture was not uploaded."
+        Then I should see "Attachment You are not allowed to upload"
+        Then I should see "allowed types: jpg, jpeg, gif, png"
+
+    Scenario: reject image if no name
+        Given I am on the artworks page
+        And I fill in "name" with ""
+        And I fill in "descrip" with "my picture"
+        When I upload a file
+        Then I should see "Picture was not uploaded."
+        Then I should see "Name can't be blank"
+
+    Scenario: accept image if no description
+        Given I am on the artworks page
+        And I fill in "name" with "Picture"
+        When I upload a file
+        Then I should see "The picture Picture has been submitted."
+
+    Scenario: accept image if no file (this needs a workaround)
+        Given I am on the artworks page
+        And I fill in "name" with "Picture"
+        When I press "submit_file"
+        Then I should not see "Picture was not uploaded."
+        Then I should not see "Attachment can't be blank"
+
+    Scenario: reject if user just clicks submit
+        Given I am on the artworks page
+        When I press "submit_file"
+        Then I should see "Picture was not uploaded."
+
     Scenario: Upload image full flow
         Given the following users
           | name  | phone      | email              | password |
@@ -49,9 +84,9 @@ Feature: Upload files to server
           | jason | 7134098786 | jasonkrez@tamu.edu | password |
           | nabir | 9799999999 | nabir@tamu.edu     | passworD |
         Given the following artworks
-          | name  | description     | attachment         |
-          | test  | leet pic        | n/a cauase im cray | 
-          | test1 | agario 4 life   | nada               | 
+          | name  | description     | attachment                        |
+          | test  | leet pic        | ../support/upload-file/test.jpg   | 
+          | test1 | agario 4 life   | nada                              | 
         Given I am on the login page
         And I fill in "session email" with "nabir@tamu.edu"
         And I fill in "session password" with "passworD"
@@ -74,7 +109,7 @@ Feature: Upload files to server
           | nabir | 9799999999 | nabir@tamu.edu     | passworD |
         Given the following artworks
           | name  | description     | attachment         |
-          | test1  | leet pic        | n/a cauase im cray | 
+          | test1  | leet pic       | n/a cauase im cray | 
           | test2 | agario 4 life   | nada               | 
         Given I am on the login page
         And I fill in "session email" with "nabir@tamu.edu"
