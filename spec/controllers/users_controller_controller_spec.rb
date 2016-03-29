@@ -54,7 +54,6 @@ RSpec.describe UsersController, type: :controller do
 
 # do some cases for put - users controller
 # do some cases for put/post -  sessions controller
-#fix routes
 #making database entities thing 
 
 

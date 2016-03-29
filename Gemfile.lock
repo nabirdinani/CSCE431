@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    ZenTest (4.11.0)
     actionmailer (4.2.5.1)
       actionpack (= 4.2.5.1)
       actionview (= 4.2.5.1)
@@ -40,6 +41,8 @@ GEM
     arel (6.0.3)
     autoprefixer-rails (6.3.4)
       execjs
+    autotest (4.4.6)
+      ZenTest (>= 4.4.1)
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -202,6 +205,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autotest
   bcrypt
   bootstrap-sass
   byebug
