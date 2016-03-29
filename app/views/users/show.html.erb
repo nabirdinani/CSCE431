@@ -24,7 +24,7 @@
 
 			<br />
 
-			<%= link_to "Submit Artwork for Auction", new_artwork_path, class: "submit_but btn btn-primary" %>
+			<%= link_to "Submit Artwork for Auction", new_artwork_path, id: 'upload_button', class: "submit_but btn btn-primary" %>
 			<br />
 			<br />
 
@@ -45,7 +45,7 @@
 			            <td><%= artwork.name %></td>
 			            <td><%= link_to "Download Artwork", artwork.attachment_url %></td>
 			            <td><%= artwork.description %></td>
-			            <td><%= button_to "Delete",  artwork, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{artwork.name}?" %></td>
+			            <td><%= button_to "Delete #{artwork.name}",  artwork, method: :delete, id: "delete_#{artwork.name}", class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{artwork.name}?" %></td>
 			         </tr>
 			         
 			      <% end %>

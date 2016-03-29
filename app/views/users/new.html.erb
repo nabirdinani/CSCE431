@@ -7,27 +7,26 @@
       <%= render 'shared/error_messages' %>
 
       <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control' %>
+      <%= f.text_field :name, id: 'name', class: 'form-control' %>
 
       <%= f.label :phone %>
-      <%= f.phone_field :phone, class: 'form-control' %>
+      <%= f.phone_field :phone, id: 'phone', class: 'form-control' %>
 
       <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
+      <%= f.email_field :email, id: 'email', class: 'form-control' %>
 
       <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
+      <%= f.password_field :password, id: 'password', class: 'form-control' %>
 
       <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
+      <%= f.password_field :password_confirmation, id: 'confirm', class: 'form-control' %>
 
-      <%= f.submit "Create my account", class: "btn btn-primary"
+      <%= f.submit "Create my account", id: 'signup_button', class: "btn btn-primary"
        %>
     <% end %>
   </div>
 </div>
-
-<br><br>
+<br>
 <div class="center">
   <%= link_to "Cancel", "/", class: "btn btn-primary" %>
 </div>
