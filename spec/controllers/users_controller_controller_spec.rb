@@ -1,8 +1,10 @@
+require 'simplecov'
+SimpleCov.start
+
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
   
-
 
 
   # before :each do
@@ -40,7 +42,7 @@ RSpec.describe UsersController, type: :controller do
 		  end
 		end
 		context 'with invalid attributes' do
-      		it 'does not create the vehicle' do
+      		it 'does not create the user' do
        		post :create, user: {name: nil, phone: "9797397702", email: "user@example.com", password: "password", password_confirmation: "password"}
         	expect(User.count).to eq(0)
       		end
