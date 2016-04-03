@@ -11,13 +11,12 @@ class ArtworksController < ApplicationController
   def create
   	@artwork = Artwork.new(artwork_params)
     @artwork.userid = session[:user_id]
-    puts "HELLLOOO #{@artwork.userid}"
 	  if @artwork.save
       flash[:success] = "The picture #{@artwork.name} has been submitted."
-      render 'new'
+      redirect_to url_for(:controller => :users, :action => :show, :id => session[:user_id])
 	  else
 	    flash[:danger] = "Picture was not uploaded."
-      render "new"
+      redirect_to url_for(:controller => :users, :action => :show, :id => session[:user_id])
 	  end
   end
 
