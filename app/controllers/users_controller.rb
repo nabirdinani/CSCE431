@@ -4,7 +4,8 @@ class UsersController < ApplicationController
 
 	 def show
     	@user = User.find(params[:id])
-      @artworks = Artwork.all
+      puts session[:user_id]
+      @artworks = Artwork.where(:userid => session[:user_id])
   	end 
 
   	def new
