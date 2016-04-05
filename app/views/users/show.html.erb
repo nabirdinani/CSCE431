@@ -23,7 +23,9 @@
 			<% end %>
 
 			<br />
-
+			<%= link_to "View Auction Items", url_for(:controller => :bidview, :action => :index), id: 'view_auction_but', class: "submit_but btn btn-primary" %>
+			<br />
+			<br />
 			<%= link_to "Submit Artwork for Auction", new_artwork_path, id: 'upload_button', class: "submit_but btn btn-primary" %>
 			<br />
 			<br />

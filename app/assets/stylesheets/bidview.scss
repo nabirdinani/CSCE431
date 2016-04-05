@@ -1,0 +1,32 @@
+// Place all the styles related to the bidview controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#displayed { 
+	height: 300px; 
+	overflow: hidden; 
+	display: block;
+    border: 1px solid gray;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sort_buttons {
+	
+    display: table;
+    margin: 0 auto;
+}
+
+.block-view-buttons {
+	display: table;
+	margin: 0 auto;
+	margin-bottom: 10px;
+}
+
+.bidview-homepage-button {
+	margin-top: 110px;
+}
+
+#countdown {
+	font-family: "Courier New", "Lucidia Console", "Times New Roman"
+}

@@ -1,0 +1,2 @@
+module BidviewHelper
+end
