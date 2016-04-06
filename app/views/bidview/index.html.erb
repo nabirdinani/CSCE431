@@ -26,11 +26,10 @@
 
 		  <% if @style == "line" %>
 			  <div class="table-responsive">
-	  			<table class="table">
+	  			<table class="table table-vcenter">
 	    			
 			      	<thead>  
 			      		<th>
-			      			<div class="sort_buttons">
 				      			<a href="/bidview?view_style=line"><button type="button" class="btn btn-default">
 								  <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
 								</button></a>
@@ -38,11 +37,9 @@
 								<a href="/bidview?view_style=block"><button type="button" class="btn btn-default" aria-label="Left Align">
 								  <span class="glyphicon glyphicon-th-large " aria-hidden="true"></span>
 								</button></a>
-							</div>
+							
 						</th>
-			      		<th></th>
-			      		<th></th>
-			      		<th>Sort by: <div class="dropdown">
+			      		<th><div id="right-align">Sort by: <div class="dropdown">
 							  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 							    Dropdown
 							    <span class="caret"></span>
@@ -55,6 +52,7 @@
 							    <li><a href="#">Default Sort</a></li>
 							  </ul>
 							</div>
+						</div>
 						</th>
 			      	</thead>
 				    <tbody>  
@@ -62,9 +60,12 @@
 				     	 <% @artworks.each do |artwork| %> 
 				          <tr>
 				            <td><img src="<%= artwork.attachment_url %>" id="displayed" /></td>
-				            <td><%= link_to "More Details", "#", id: 'upload_button1', class: "btn btn-info bidview-homepage-button" %></td>
-				            <td><%= link_to "Add to Favorites", "#", id: 'upload_button2', class: "btn btn-success bidview-homepage-button" %></td>
-				            <td><%= link_to "Watch Item", "#", id: 'upload_button3', class: "btn btn-success bidview-homepage-button" %></td>
+				            <td>
+				            	<div class="btn-toolbar bidview-homepage-button" role="group" aria-label="...">
+				                <%= link_to "More Details", "#", id: 'upload_button1', class: "btn btn-info padded_button" %>
+				                <%= link_to "Add to Favorites", "#", id: 'upload_button2', class: "btn btn-success padded_button" %>
+				                <%= link_to "Watch Item", "#", id: 'upload_button3', class: "btn btn-success padded_button" %></td>
+				            </div>
 				          </tr>
 				         
 				      	<% end %>
@@ -117,12 +118,13 @@
 				     	 <% @artworks.each do |artwork| %> 
 				         <tr>
 				            <td><img src="<%= artwork.attachment_url %>" id="displayed"/><br/>
-				            <div class="block-view-buttons">
-							<%= link_to "More Details", "#", id: 'upload_button1', class: "btn btn-info" %>
+				            	<div class="sort_buttons">
+				            <div class="btn-toolbar" role="group" aria-label="...">
+							<%= link_to "More Details", "#", id: 'upload_button1', class: "btn btn-info padded_button_block" %>
 							<span> </span>
-				            <%= link_to "Add to Favorites", "#", id: 'upload_button2', class: "btn btn-success" %>
-				            <span> </span>
-				            <%= link_to "Watch Item", "#", id: 'upload_button3', class: "btn btn-success" %></div></td>
+				            <%= link_to "Add to Favorites", "#", id: 'upload_button2', class: "btn btn-success padded_button_block" %>
+				            <span></span>
+				            <%= link_to "Watch Item", "#", id: 'upload_button3', class: "btn btn-success padded_button_block" %></div></div></td>
 				         </tr>
 				         
 				      <% end %>

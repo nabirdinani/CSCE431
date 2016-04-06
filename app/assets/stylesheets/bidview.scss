@@ -12,9 +12,17 @@
 }
 
 .sort_buttons {
-	
     display: table;
     margin: 0 auto;
+}
+
+.padded_button {
+	margin: 12px 80px 12px 10px;
+}
+
+.padded_button_block {
+	margin: 0px 12px 12px 10px;
+	float: right;
 }
 
 .block-view-buttons {
@@ -23,10 +31,21 @@
 	margin-bottom: 10px;
 }
 
-.bidview-homepage-button {
-	margin-top: 110px;
+.table-vcenter td {
+   vertical-align: middle!important;
 }
 
 #countdown {
 	font-family: "Courier New", "Lucidia Console", "Times New Roman"
+}
+
+table td {
+    border-top: none !important;
+}
+table th {
+    border-bottom: none !important;
+}
+
+#right-align {
+	float: right;
 }
