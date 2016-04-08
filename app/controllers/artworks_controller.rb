@@ -1,3 +1,4 @@
+
 class ArtworksController < ApplicationController
   def index
   	@artworks = Artwork.all
@@ -9,20 +10,21 @@ class ArtworksController < ApplicationController
 
   def create
   	@artwork = Artwork.new(artwork_params)
-	if @artwork.save
+    @artwork.userid = session[:user_id]
+	  if @artwork.save
       flash[:success] = "The picture #{@artwork.name} has been submitted."
-      render 'new'
-	else
-	  flash[:danger] = "Picture was not uploaded."
-      render "new"
-	end
+      redirect_to url_for(:controller => :users, :action => :show, :id => session[:user_id])
+	  else
+	    flash[:danger] = "Picture was not uploaded."
+      redirect_to url_for(:controller => :users, :action => :show, :id => session[:user_id])
+	  end
   end
 
   def destroy
   	@artwork = Artwork.find(params[:id])
     @artwork.destroy
     flash[:success] = "The picture #{@artwork.name} has been deleted."
-    render 'new'
+    redirect_to url_for(:controller => :users, :action => :show, :id => session[:user_id])
   end
 
   private
