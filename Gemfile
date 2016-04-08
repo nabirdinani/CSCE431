@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-ruby '2.2.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
@@ -17,7 +16,6 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-# file uploads
 gem 'carrierwave', '~> 0.10.0'
 gem 'cucumber-rails'
 gem 'database_cleaner'
@@ -56,8 +54,7 @@ group :development do
   gem 'spring'
 end
 
-
 group :production do
-	gem 'rails_12factor'
-  	gem 'pg'
- end
+  gem 'pg'
+  gem 'rails_12factor'
+end
