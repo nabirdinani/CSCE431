@@ -7,6 +7,7 @@ Feature: Upload files to server
         Given the following users
           | name  | phone      | email              | password |
           | jason | 7134098786 | jasonkrez@tamu.edu | password |
+        Given the user "jason" is activated
         Given I am on the login page
         And I fill in "session email" with "jasonkrez@tamu.edu"
         And I fill in "session password" with "password"
@@ -67,6 +68,7 @@ Feature: Upload files to server
           | name  | phone      | email              | password |
           | jason | 7134098786 | jasonkrez@tamu.edu | password |
           | nabir | 9799999999 | nabir@tamu.edu     | passworD |
+        Given the user "nabir" is activated
         Given I am on the login page
         And I fill in "session email" with "nabir@tamu.edu"
         And I fill in "session password" with "passworD"
@@ -87,6 +89,7 @@ Feature: Upload files to server
           | name  | description     | attachment                        |
           | test  | leet pic        | ../support/upload-file/test.jpg   | 
           | test1 | agario 4 life   | nada                              | 
+        Given the user "nabir" is activated
         Given I am on the login page
         And I fill in "session email" with "nabir@tamu.edu"
         And I fill in "session password" with "passworD"
@@ -111,6 +114,7 @@ Feature: Upload files to server
           | name  | description     | attachment         |
           | test1  | leet pic       | n/a cauase im cray | 
           | test2 | agario 4 life   | nada               | 
+        Given the user "nabir" is activated
         Given I am on the login page
         And I fill in "session email" with "nabir@tamu.edu"
         And I fill in "session password" with "passworD"
@@ -134,6 +138,7 @@ Feature: Upload files to server
           | name  | description     | attachment         |
           | test1  | leet pic        | n/a cauase im cray | 
           | test2 | agario 4 life   | nada               | 
+        Given the user "nabir" is activated
         Given I am on the artworks page
         And I fill in "name" with "test123"
         And I fill in "descrip" with "my picture"
@@ -156,11 +161,4 @@ Feature: Upload files to server
         Then I should not see "test123"
         Then I should see "test1"
         Then I should see "test2"
-
-
-
-
-
-
-
 

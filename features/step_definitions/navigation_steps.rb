@@ -109,6 +109,10 @@ Given /^the following artworks$/ do |table|
   end
 end
 
+Given(/^the user "([^"]*)" is activated$/) do |arg1|
+  User.find_by_name(arg1).activate
+end
+
 When /^I upload a file$/ do
   attach_file(:file_field, File.join(File.dirname(__FILE__), "..", "support", "upload-files", "1.jpg"))
   click_button "submit_file"

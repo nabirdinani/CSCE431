@@ -6,6 +6,9 @@ module NavigationHelpers
       '/'
     when /the artworks page/
       '/artworks/new'
+      
+    when /^the user info page for "(.*)"$/
+      user_path(User.find_by_name($1))
     else
       begin
         page_name =~ /the (.*) page/
