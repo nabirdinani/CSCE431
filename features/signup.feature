@@ -89,17 +89,47 @@ Feature: Signup
         Then I should see "The form contains 1 error"
         Then I should see "Password confirmation doesn't match Password"
         
+    Scenario: Correctly indicates to check email
+        Given I am on the signup page
+        And I fill in "name" with "John"
+        And I fill in "phone" with "1231231234"
+        And I fill in "email" with "example@example.com"
+        And I fill in "password" with "password"
+        And I fill in "confirm" with "password"
+        When I press "signup_button"
+        Then I should see "Please check your email to activate your account."
+        And I should receive an email
         
         
     Scenario: Correctly sends email to correct address
         Given I am on the signup page
         And I fill in "name" with "John"
         And I fill in "phone" with "1231231234"
-        And I fill in "email" with "jdoe@doe.com"
-        And I fill in "password" with "PASSWORD"
+        And I fill in "email" with "example@example.com"
+        And I fill in "password" with "password"
         And I fill in "confirm" with "password"
         When I press "signup_button"
         And I should receive an email
         When I open the email
-        Then I should see "Please activate your new account" in the subject
+        Then I should see "Account activation" in the email subject
         When I click the first link in the email
+        
+        
+    Scenario: Correctly activates
+        Given I am on the signup page
+        And I fill in "name" with "John"
+        And I fill in "phone" with "1231231234"
+        And I fill in "email" with "example@example.com"
+        And I fill in "password" with "password"
+        And I fill in "confirm" with "password"
+        When I press "signup_button"
+        And I should receive an email
+        When I open the email
+        Then I should see "Account activation" in the email subject
+        When I click the first link in the email
+        And I am on the login page
+        Given I am on the login page
+        And I fill in "session email" with "example@example.com"
+        And I fill in "session password" with "password"
+        When I press "login_button"
+        Then I should see "Welcome, John!"
