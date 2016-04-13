@@ -14,7 +14,7 @@
   	<body>
 
 		
-	<% if logged_in? %>
+	<% if @active %>
 		  <div>
 		    <h1>Hello, <%= @user.name %>.</h1>
 		  </div>
@@ -25,7 +25,7 @@
 		  </div>
 
 		  <% if @style == "line" %>
-			  <div class="table-responsive">
+			  <div class="table-responsive line-view">
 	  			<table class="table table-vcenter">
 	    			
 			      	<thead>  
@@ -83,7 +83,7 @@
 			  </div>
 			  <br/> <br/> <br/>
 			<% else %>
-				<div class="table-responsive">
+				<div class="table-responsive block-view">
 	  			<table class="table">
 	    			
 			      	<thead>  

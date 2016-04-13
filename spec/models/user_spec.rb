@@ -74,6 +74,50 @@ RSpec.describe User, type: :model do
     @user.password = @user.password_confirmation = "a" * 5
     expect(@user).to_not be_valid
   end
+
+  it "create_reset_digest should update properly" do
+    expect(@user.reset_digest).to be_nil
+    expect(@user.reset_sent_at).to be_nil
+
+    @user.create_reset_digest
+
+    expect(@user.reset_digest).to_not be_nil
+    expect(@user.reset_sent_at).to_not be_nil
+  end
+
+  it "proper password reset funnels" do
+    expect(@user.reset_digest).to be_nil
+    expect(@user.reset_sent_at).to be_nil
+
+    @user.create_reset_digest
+
+    expect(@user.reset_sent_at).to be > 2.hours.ago
+  end
+
+  it "remember token is set when remember called" do
+    expect(@user.remember_token).to be_nil
+
+    @user.remember
+    expect(@user.remember_token).to_not be_nil
+  end
+
+   it "Bcrypt correct password" do
+    expect(@user.authenticated?("password", "password")).to be true
+  end
+
+  it "Bcrypt incorrect password" do
+    expect(@user.authenticated?("password", "passworD")).to be false
+  end
+
+  it "activation correct" do
+    @user.activate
+    expect(@user.activated).to be true
+  end
+
+  it "forget me" do
+    @user.forget
+    expect(@user.remember_digest).to be nil
+  end
 end
 
 

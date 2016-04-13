@@ -7,7 +7,7 @@ RSpec.describe Artwork, type: :model do
   
 
   before :each do
-  	@artwork = Artwork.new(name: "Example User", description: "Hey, its a cool bra!!!", attachment: AttachmentUploader.new)
+  	@artwork = Artwork.new(name: "Example User", description: "Hey, its a cool bra!!!", attachment: AttachmentUploader.new, :userid => 1)
   end
   it 'should be valid' do 
   	expect(@artwork).to be_valid
@@ -44,6 +44,11 @@ RSpec.describe Artwork, type: :model do
   	@artwork.description = "     "
   	@artwork.attachment = nil
   	expect(@artwork).to_not be_valid
+  end
+
+  it 'should fail without a userid' do
+    @artwork.userid = nil
+    expect(@artwork).to_not be_valid
   end
 
 
