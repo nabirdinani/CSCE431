@@ -128,3 +128,7 @@ When /^I upload wrong image file$/ do
   click_button "submit_file"
 end
  
+ 
+Then /^I see the link "(.*?)" to "(.*?)"$/ do |link,url|
+  page.should have_link(link, :href => url)
+end
