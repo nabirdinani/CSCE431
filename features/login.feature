@@ -134,7 +134,7 @@ Feature: Login
         When I press "signup_button"
         And I should receive an email
         When I open the email
-        Then I should see "Account activation" in the email subject
+        Then I should see "Account activation - Health4All" in the email subject
         When I click the first link in the email
         Given I am on the login page
         And I fill in "session email" with "example@example.com"

@@ -87,7 +87,7 @@ Feature: View all avalible items to bid on
         And I fill in "session password" with "password"
         And I press "login_button"
         And I am on the bidview_index page
-        Then I see the link "donate_button" to "https://www.paypal.com/us/cgi-bin/webscr?cmd=_flow&SESSION=mP1OMyAKLrc31SJC9cSkFKgkSgQXVL1H039ASmkMhozu3FBXlh8OAckYf2i&dispatch=5885d80a13c0db1f8e263663d3faee8d6625bf1e8bd269586d425cc639e26c6a"
+        Then I see the link "donate_button" to "#"
         
         
     Scenario: Verify details button works
