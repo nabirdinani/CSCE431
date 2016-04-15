@@ -1,0 +1,59 @@
+// Place all the styles related to the bidview controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#displayed { 
+	height: 300px; 
+	overflow: hidden; 
+	display: block;
+    border: 1px solid gray;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.padded_button {
+	margin: 12px 80px 12px 10px;
+}
+
+.padded_button_block {
+	margin: 0px 12px 12px 10px;
+	float: right;
+}
+
+.block-view-buttons {
+	display: table;
+	margin: 0 auto;
+	margin-bottom: 10px;
+}
+
+.table-vcenter td {
+   vertical-align: middle!important;
+}
+
+#countdown {
+	font-family: "Courier New", "Lucidia Console", "Times New Roman"
+}
+
+table td {
+    border-top: none !important;
+}
+table th {
+    border-bottom: none !important;
+}
+
+#right-align {
+	float: right;
+}
+
+.bid-input{
+	width:400px;
+}
+
+.bid-amount{
+	width:100px;
+}
+
+.bid-btn{
+	width:200px;
+}
