@@ -38,6 +38,7 @@
 
 				  <div style="display: inline-block;">
 		       	 	<img src="<%= artwork1.attachment_url %>" class ="displayedreview" />
+		       	 	
 		            	<form class="form">
 						  <div class="form-group">
 						    <label for="startingprice">Starting Price</label>
@@ -84,7 +85,8 @@
 				<% @artworks.each do |artwork| %> 
 				  <div class="div_box">
 					<img src="<%= artwork.attachment_url %>" class ="displayedreview" />
-					<form class="form" style="float: left; margin: 0; padding: 0; margin-left: 20px">
+					
+					<form class="form" style="float: left; margin: 0; padding: 0; margin-left: 20px;">
 						  <div class="form-group">
 						    &nbsp;&nbsp;<label for="startingprice">Starting Price</label>
 						    &nbsp;&nbsp;<input type="text" class="form-control" id="startingprice" placeholder="$75">
