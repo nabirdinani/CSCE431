@@ -12,8 +12,7 @@
     	<![endif]-->
   	</head>
   	<body>
-  		<%#<h1><%= @artwork.name.</h1> %>
-  		<h1> Artwork Name </h1>
+  		<h1><%= @artwork.name%></h1>
   		<div>
 		  	<br/>
 		  	<h1 id="countdown">03:34:58</h1>
@@ -24,7 +23,7 @@
 	    <tbody>  
 
 	         	<tr>
-		      		<td rowspan ="4"><img src="#" id="displayed" /></td>
+		      		<td rowspan ="4"><img src="<%= @artwork.attachment_url %>" id="displayed" /></td>
 		    		<td colspan="2">
 			 		<div class="btn-toolbar bidview-homepage-button" role="group" aria-label="...">
 			    		<%= link_to "$5", "#", id: 'denomination5', class: "btn btn-info padded_button" %>
