@@ -57,12 +57,12 @@
 			      	</thead>
 				    <tbody>  
 
-				     	 <% @artworks.each do |artwork| %> 
+				     	 <% @artworksall.each do |artwork| %> 
 				          <tr>
 				            <td><img src="<%= artwork.attachment_url %>" id="displayed" /></td>
 				            <td>
 				            	<div class="btn-toolbar bidview-homepage-button" role="group" aria-label="...">
-				                <%= link_to "More Details", "#", id: 'upload_button1', class: "btn btn-info padded_button" %>
+				                <%= link_to "More Details", url_for(:controller => :biddetails, :action => :index), id: 'upload_button1', class: "btn btn-info padded_button" %>
 				                <%= link_to "Add to Favorites", "#", id: 'upload_button2', class: "btn btn-success padded_button" %>
 				                <%= link_to "Watch Item", "#", id: 'upload_button3', class: "btn btn-success padded_button" %></td>
 				            </div>
@@ -83,11 +83,7 @@
 			  </div>
 			  <br/> <br/> <br/>
 			<% else %>
-				<div class="table-responsive block-view">
-	  			<table class="table">
-	    			
-			      	<thead>  
-			      		<th>
+					
 			      			<div class="sort_buttons"><div class="sort_buttons">
 				      			<a href="/bidview?view_style=line"><button type="button" class="btn btn-default">
 								  <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
@@ -110,33 +106,35 @@
 							  </ul>
 							</div>
 
-							</div>
-						</th>
-			      	</thead>
-				    <tbody>  
-
-				     	 <% @artworks.each do |artwork| %> 
-				         <tr>
-				            <td><img src="<%= artwork.attachment_url %>" id="displayed"/><br/>
-				            	<div class="sort_buttons">
-				            <div class="btn-toolbar" role="group" aria-label="...">
-							<%= link_to "More Details", "#", id: 'upload_button1', class: "btn btn-info padded_button_block" %>
-							<span> </span>
-				            <%= link_to "Add to Favorites", "#", id: 'upload_button2', class: "btn btn-success padded_button_block" %>
-				            <span></span>
-				            <%= link_to "Watch Item", "#", id: 'upload_button3', class: "btn btn-success padded_button_block" %></div></div></td>
-				         </tr>
-				         
+							</div><br/>
+							<div style="text-align: center;">
+				     	 <% @artworksall.each_slice(2) do |artwork1, artwork2| %> 
+				     	 	<div style="display: inline-block;">
+					      		<img src="<%= artwork1.attachment_url %>" id="displayed"/><br/>
+					            	<div class="sort_buttons">
+					            <div class="btn-toolbar" role="group" aria-label="...">
+								<%= link_to "More Details", url_for(:controller => :biddetails, :action => :index), id: 'upload_button1', class: "btn btn-info padded_button_block" %>
+								<span> </span>
+					            <%= link_to "Add to Favorites", "#", id: 'upload_button2', class: "btn btn-success padded_button_block" %>
+					            <span></span>
+					            <%= link_to "Watch Item", "#", id: 'upload_button3', class: "btn btn-success padded_button_block" %></div></div>
+				          
+					<% if artwork2 != nil %>
+					     		<img src="<%= artwork2.attachment_url %>" id="displayed"/><br/>
+					            	<div class="sort_buttons">
+					            <div class="btn-toolbar" role="group" aria-label="...">
+								<%= link_to "More Details", url_for(:controller => :biddetails, :action => :index), id: 'upload_button1', class: "btn btn-info padded_button_block" %>
+								<span> </span>
+					            <%= link_to "Add to Favorites", "#", id: 'upload_button2', class: "btn btn-success padded_button_block" %>
+					            <span></span>
+					            <%= link_to "Watch Item", "#", id: 'upload_button3', class: "btn btn-success padded_button_block" %></div></div>
+				            </div>
+				            <% end %>
 				      <% end %>
-				   </tbody>
-	  			</table>
-	  			<div class="sort_buttons">
-	  				<br/>
-	  				<br/>
-	  				<p style="font-famiy: 'Courier New', 'Times New Roman'; text-align: center;">Interested in directly helping Health4All?</p>
-	  				<%= link_to "Submit your own Artwork", url_for(:controller => :artworks, :action => :new), id: 'upload_button1', class: "btn btn-primary" %><span> </span>
-				    <%= link_to "Donate to Health4All", "#", id: 'donate_button', class: "btn btn-primary" %>
-	  			</div>
+				  </div>
+
+
+	  			
 			  </div>
 			<% end %>
 

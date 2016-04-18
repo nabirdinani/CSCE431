@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+ 	<head>
+    	<title>Health4All Auction Site</title>
+    	<%= stylesheet_link_tag 'application', media: 'all',
+                                           'data-turbolinks-track' => true %>
+    	<!-- <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %> -->
+    	<%= csrf_meta_tags %>
+    	<!--[if lt IE 9]>
+      		<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+      		</script>
+    	<![endif]-->
+  	</head>
+  	<body>
+  							<br/>
+							<br/><br/>
+							<br/><div style="text-align: center">
+				<div style="display:inline-block;">
+							
+  		<a href="/review?view_style=line"><button type="button" class="btn btn-default">
+								  <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+								</button></a>
+								<span>                    </span>
+								<a href="/review?view_style=block"><button type="button" class="btn btn-default" aria-label="Left Align">
+								  <span class="glyphicon glyphicon-th-large " aria-hidden="true"></span>
+								</button></a>
+
+							<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Review Submission Panel</span>
+				</div></div>
+<br/>
+							<br/>
+		
+	<% if @admin %>
+
+			<% if @style == "block" %>
+			<div class="center-box" style="text-align: center;">
+		     	 <% @artworks.each_slice(2) do |artwork1, artwork2| %> 
+
+				  <div style="display: inline-block;">
+		       	 	<img src="<%= artwork1.attachment_url %>" class ="displayedreview" />
+		            	<form class="form">
+						  <div class="form-group">
+						    <label for="startingprice">Starting Price</label>
+						    <input type="text" class="form-control" id="startingprice" placeholder="$75">
+						  </div>
+						  <div class="form-group">
+						    <label for="autowinprice">Autowin Price</label>
+						    <input type="email" class="form-control" id="autowinprice" placeholder="$200">
+						  </div>
+						  <div style="text-align: center;">
+						  <div class="btn-toolbar" role="group" aria-label="..." style="display: inline-block;">
+		                  <%= link_to "Accept", "#", id: 'upload_button2', type: "submit", class: "btn btn-success padded_button" %>
+		                  <%= link_to "Reject", "#", id: 'upload_button3', class: "btn btn-danger padded_button" %>
+		              </div>
+		                </div>
+					</form>
+					<% if artwork2 != nil %>
+
+							<img src="<%= artwork2.attachment_url %>" class ="displayedreview" />
+		            	<form class="form">
+						  <div class="form-group">
+						    <label for="startingprice">Starting Price</label>
+						    <input type="text" class="form-control" id="startingprice" placeholder="$75">
+						  </div>
+						  <div class="form-group">
+						    <label for="autowinprice">Autowin Price</label>
+						    <input type="email" class="form-control" id="autowinprice" placeholder="$200">
+						  </div>
+						  <div style="text-align: center;">
+						  <div class="btn-toolbar" role="group" aria-label="..." style="display: inline-block;">
+		                  <%= link_to "Accept", "#", id: 'upload_button2', type: "submit", class: "btn btn-success padded_button" %>
+		                  <%= link_to "Reject", "#", id: 'upload_button3', class: "btn btn-danger padded_button" %>
+		              </div>
+		                </div>
+					</form>
+
+					<%end%>
+		            </div>
+		         
+		         <% end %>
+
+		     </div>
+		    <% else %>
+				<% @artworks.each do |artwork| %> 
+				  <div class="div_box">
+					<img src="<%= artwork.attachment_url %>" class ="displayedreview" />
+					<form class="form" style="float: left; margin: 0; padding: 0; margin-left: 20px">
+						  <div class="form-group">
+						    &nbsp;&nbsp;<label for="startingprice">Starting Price</label>
+						    &nbsp;&nbsp;<input type="text" class="form-control" id="startingprice" placeholder="$75">
+						  </div>
+						  <div class="form-group">
+						    &nbsp;&nbsp;<label for="autowinprice">Autowin Price</label>
+						    &nbsp;&nbsp;<input type="email" class="form-control" id="autowinprice" placeholder="$200">
+						  </div><br/>
+						  <div class="center-buttons">
+						  <div class="btn-toolbar bidview-homepage-button" role="group" aria-label="...">
+		                  	<%= link_to "Accept", "#", id: 'upload_button2', type: "submit", class: "btn btn-success padded_button" %>
+		                   <%= link_to "Reject", "#", id: 'upload_button3', class: "btn btn-danger padded_button" %>
+		               </div>
+		                </div>
+					</form>
+				  </div>
+				  <br/><br/>
+				<% end %>
+		    <% end %>
+
+	
+		
+			
+	<% else %>
+		You are not authorized to view this page.
+	<% end %>
+
+  	</body>
+
+ </html>

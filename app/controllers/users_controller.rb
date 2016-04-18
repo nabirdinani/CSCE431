@@ -3,9 +3,23 @@ class UsersController < ApplicationController
   
 
 	 def show
-    	@user = User.find(params[:id])
-      puts session[:user_id]
+    	if logged_in?
+        begin
+          @user = User.find(session[:user_id])
+        rescue ActiveRecord::RecordNotFound => e
+          @user = User.create(:name => "Nil", :email => "nil@nil.edu", :password => "nil", :phone => "nil")
+        end
+        @active = true
+      end
+
       @artworks = Artwork.where(:userid => session[:user_id])
+
+      @style = params[:view_style]
+      if (@style == nil) 
+        @style = "block"
+      end
+      
+      @artworksall = Artwork.all
   	end 
 
   	def new

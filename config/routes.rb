@@ -69,6 +69,8 @@ Rails.application.routes.draw do
   resources :users
   resources :artworks, only: [:index, :new, :create, :destroy]
   resources :bidview, only: [:index]
+  resources :biddetails, only: [:index]
+  resources :review, only: [:index]
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
 

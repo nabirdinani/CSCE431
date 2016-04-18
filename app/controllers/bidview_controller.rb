@@ -12,7 +12,7 @@ class BidviewController < ApplicationController
       rescue ActiveRecord::RecordNotFound => e
         @user = User.create(:name => "Nil", :email => "nil@nil.edu", :password => "nil", :phone => "nil")
       end
-        @active = true
+      @active = true
   	end
   	@artworks = Artwork.all
   end
