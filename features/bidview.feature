@@ -92,7 +92,7 @@ Feature: View all avalible items to bid on
         When I upload a file
         Given I am on the user info page for "Nick"
         When I click "More Details"
-        Then I should be on the biddetails page
+        Then I should see "Current Bid"
         
         Scenario: Verify Favorites button works(To be implemented Iteration 3)
         Given the following users
