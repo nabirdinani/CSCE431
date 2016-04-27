@@ -8,6 +8,10 @@ class ArtworksController < ApplicationController
   	@artwork = Artwork.new
   end
 
+  def show
+    @artwork = Artwork.find(params[:id])
+  end
+
   def create
   	@artwork = Artwork.new(artwork_params)
     @artwork.userid = session[:user_id]

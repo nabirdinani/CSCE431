@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  
+
   get 'password_resets/new'
 
   get 'password_resets/edit'
@@ -67,9 +69,11 @@ Rails.application.routes.draw do
   delete    '/logout'       =>   'sessions#destroy'
   get                             'sessions/new'
   resources :users
-  resources :artworks, only: [:index, :new, :create, :destroy]
+  resources :artworks do
+    resources :bids
+  end
   resources :bidview, only: [:index]
-  resources :biddetails, only: [:index]
+  
   resources :review, only: [:index]
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
