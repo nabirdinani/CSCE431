@@ -33,7 +33,7 @@
 	<% if @admin %>
 
 			<% if @style == "block" %>
-			<div class="center-box" style="text-align: center;">
+			<div class="center-box block-view" style="text-align: center;">
 		     	 <% @artworks.each_slice(2) do |artwork1, artwork2| %> 
 
 				  <div style="display: inline-block;">
@@ -83,7 +83,7 @@
 		     </div>
 		    <% else %>
 				<% @artworks.each do |artwork| %> 
-				  <div class="div_box">
+				  <div class="div_box line-view">
 					<img src="<%= artwork.attachment_url %>" class ="displayedreview" />
 					
 					<form class="form" style="float: left; margin: 0; padding: 0; margin-left: 20px;">
