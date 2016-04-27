@@ -132,4 +132,4 @@ Feature: Signup
         And I fill in "session email" with "example@example.com"
         And I fill in "session password" with "password"
         When I press "login_button"
-        Then I should see "Welcome, John!"
+        Then I should see "Hello, John!"
