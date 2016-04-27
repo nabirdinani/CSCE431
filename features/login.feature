@@ -12,7 +12,7 @@ Feature: Login
         And I fill in "session email" with "jasonkrez@tamu.edu"
         And I fill in "session password" with "password"
         When I press "login_button"
-        Then I should see "Welcome, jason!" 
+        Then I should see "Hello, jason!" 
 
     Scenario: Correctly redirects user to user page (existing user, login yes, verify correct user login)
         Given the following users
@@ -25,7 +25,7 @@ Feature: Login
         And I fill in "session password" with "passworD"
         When I press "login_button"
         Then I should not be on the login page
-        Then I should see "Welcome, nabir!"
+        Then I should see "Hello, nabir!"
 
     Scenario: Rejects incorrect credentials (existing user, login no)
         Given the following users
@@ -50,7 +50,7 @@ Feature: Login
         And I fill in "session email" with "nabir@tamu.edu"
         And I fill in "session password" with "password"
         When I press "login_button"
-        Then I should not see "Welcome, jason!" 
+        Then I should not see "Hello, jason!" 
 
     Scenario: Correctly navigates to correct user on login (existing user, login yes)
         Given the following users
@@ -62,7 +62,7 @@ Feature: Login
         And I fill in "session email" with "nabir@tamu.edu"
         And I fill in "session password" with "password"
         When I press "login_button"
-        Then I should not see "Welcome, jason!" 
+        Then I should not see "Hello, jason!" 
 
     Scenario: Rejects wrong username
         Given the following users
@@ -140,7 +140,7 @@ Feature: Login
         And I fill in "session email" with "example@example.com"
         And I fill in "session password" with "test1234"
         When I press "login_button"
-        Then I should see "Welcome, John Doe!"
+        Then I should see "Hello, John Doe!"
         
         
     Scenario: Lets user know that they need to activate account

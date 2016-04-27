@@ -12,7 +12,7 @@ Feature: Upload files to server
         And I fill in "session email" with "jasonkrez@tamu.edu"
         And I fill in "session password" with "password"
         When I press "login_button"
-        Then I should see "Submit Artwork for Auction" 
+        Then I should see "Submit your own Artwork" 
 
     Scenario: Upload image
       Given the following users
@@ -127,7 +127,7 @@ Feature: Upload files to server
         And I fill in "session email" with "nabir@tamu.edu"
         And I fill in "session password" with "passworD"
         When I press "login_button"
-        Then I should see "Submit Artwork for Auction"
+        Then I should see "Submit your own Artwork" 
         Given I am on the artworks page
         And I fill in "name" with "test123"
         And I fill in "descrip" with "my picture"
@@ -148,7 +148,7 @@ Feature: Upload files to server
         Then I should see "Name"
         Then I should see "Download Link"
         Then I should see "Description"
-        Then I should see "Submit Artwork for Auction"
+        Then I should see "Submit your own Artwork" 
         Given I am on the artworks page
         And I fill in "name" with "test"
         And I fill in "descrip" with "my picture"
