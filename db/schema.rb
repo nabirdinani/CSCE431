@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160429175244) do
+ActiveRecord::Schema.define(version: 20160429181705) do
 
   create_table "artworks", force: :cascade do |t|
     t.string   "name"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20160429175244) do
   end
 
   create_table "bids", force: :cascade do |t|
-    t.integer  "amount"
+    t.float    "amount"
     t.integer  "user_id"
     t.integer  "artwork_id"
     t.datetime "created_at", null: false
