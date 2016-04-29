@@ -61,8 +61,10 @@
 							    <span class="caret"></span>
 							  </button>
 							  <ul class="dropdown-menu" aria-labelledby="sort_by_dropdown">
-							    <li><a href="/users/<%=@user.id%>?view_style=line&sort_by=lowest">Lowest Price</a></li>
-							    <li><a href="/users/<%=@user.id%>?view_style=line&sort_by=highest">Highest Price</a></li>
+							    <li><a href="/users/<%=@user.id%>?view_style=line&sort_by=lowest">Lowest Bid</a></li>
+							    <li><a href="/users/<%=@user.id%>?view_style=line&sort_by=highest">Highest Bid</a></li>
+							    <li><a href="/users/<%=@user.id%>?view_style=line&sort_by=highestBN">Highest Buy Now</a></li>
+							    <li><a href="/users/<%=@user.id%>?view_style=line&sort_by=lowestBN">Lowest Buy Now</a></li>
 							    <li><a href="/users/<%=@user.id%>?view_style=line&sort_by=recent">Most Recent</a></li>
 							    <li role="separator" class="divider"></li>
 							    <li><a href="/users/<%=@user.id%>?view_style=line&sort_by=id">Default Sort</a></li>
@@ -118,8 +120,10 @@
 							    <span class="caret"></span>
 							  </button>
 							  <ul class="dropdown-menu" aria-labelledby="sort_by_dropdown">
-							    <li><a href="/users/<%=@user.id%>?view_style=block&sort_by=lowest">Lowest Price</a></li>
-							    <li><a href="/users/<%=@user.id%>?view_style=block&sort_by=highest">Highest Price</a></li>
+							    <li><a href="/users/<%=@user.id%>?view_style=block&sort_by=lowest">Lowest Bid</a></li>
+							    <li><a href="/users/<%=@user.id%>?view_style=block&sort_by=highest">Highest Bid</a></li>
+							    <li><a href="/users/<%=@user.id%>?view_style=block&sort_by=highestBN">Highest Buy Now</a></li>
+							    <li><a href="/users/<%=@user.id%>?view_style=block&sort_by=lowestBN">Lowest Buy Now</a></li>
 							    <li><a href="/users/<%=@user.id%>?view_style=block&sort_by=recent">Most Recent</a></li>
 							    <li role="separator" class="divider"></li>
 							    <li><a href="/users/<%=@user.id%>?view_style=block&sort_by=id">Default Sort</a></li>
