@@ -37,45 +37,34 @@
 		     	 <% @artworks.each_slice(2) do |artwork1, artwork2| %> 
 
 				  <div style="display: inline-block;">
-		       	 	<img src="<%= artwork1.attachment_url %>" class ="displayedreview" />
-		       	 	
-		            	<form class="form">
-						  <div class="form-group">
-						    <label for="startingprice">Starting Price</label>
-						    <input type="text" class="form-control" id="startingprice" placeholder="$75">
-						  </div>
-						  <div class="form-group">
-						    <label for="autowinprice">Autowin Price</label>
-						    <input type="email" class="form-control" id="autowinprice" placeholder="$200">
-						  </div>
-						  <div style="text-align: center;">
-						  <div class="btn-toolbar" role="group" aria-label="..." style="display: inline-block;">
-		                  <%= link_to "Accept", "#", id: 'upload_button2', type: "submit", class: "btn btn-success padded_button" %>
-		                  <%= link_to "Reject", "#", id: 'upload_button3', class: "btn btn-danger padded_button" %>
-		              </div>
-		                </div>
-					</form>
-					<% if artwork2 != nil %>
+				  			<div>
+		       	 			<img src="<%= artwork1.attachment_url %>" class ="displayedreview" />
+		       	 			</div>
+		       	 			<br/>
+		       	 			<div>
+		            		<%= form_tag("/review/#{artwork1.id}", method: "put") do %>
+							  <%= label_tag(:startingprice, "Starting Price") %>
+							  <%= text_field_tag(:startingprice) %>
+							  <%= label_tag(:autowinprice, "Autowin Price") %>
+							  <%= text_field_tag(:autowinprice) %>
+							  <%= submit_tag "Accept", class: "btn btn-success padded_button bid-btn"%>
+							  <%= submit_tag "Reject", class: "btn btn-danger padded_button bid-btn"%>
+							<% end %>
+						</div>
+		            	
+						<% if artwork2 != nil %>
 
-							<img src="<%= artwork2.attachment_url %>" class ="displayedreview" />
-		            	<form class="form">
-						  <div class="form-group">
-						    <label for="startingprice">Starting Price</label>
-						    <input type="text" class="form-control" id="startingprice" placeholder="$75">
-						  </div>
-						  <div class="form-group">
-						    <label for="autowinprice">Autowin Price</label>
-						    <input type="email" class="form-control" id="autowinprice" placeholder="$200">
-						  </div>
-						  <div style="text-align: center;">
-						  <div class="btn-toolbar" role="group" aria-label="..." style="display: inline-block;">
-		                  <%= link_to "Accept", "#", id: 'upload_button2', type: "submit", class: "btn btn-success padded_button" %>
-		                  <%= link_to "Reject", "#", id: 'upload_button3', class: "btn btn-danger padded_button" %>
-		              </div>
-		                </div>
-					</form>
+								<img src="<%= artwork2.attachment_url %>" class ="displayedreview" />
+			            		<%= form_tag("/review/#{artwork2.id}", method: "put") do %>
+								  <%= label_tag(:startingprice, "Starting Price") %>
+								  <%= text_field_tag(:startingprice) %>
+								  <%= label_tag(:autowinprice, "Autowin Price") %>
+								  <%= text_field_tag(:autowinprice) %>
+								  <%= submit_tag "Accept", class: "btn btn-success padded_button bid-btn"%>
+								  <%= submit_tag "Reject", class: "btn btn-danger padded_button bid-btn"%>
+								<% end %>
 
-					<%end%>
+						<%end%>
 		            </div>
 		         
 		         <% end %>
@@ -84,24 +73,21 @@
 		    <% else %>
 				<% @artworks.each do |artwork| %> 
 				  <div class="div_box line-view">
-					<img src="<%= artwork.attachment_url %>" class ="displayedreview" />
 					
-					<form class="form" style="float: left; margin: 0; padding: 0; margin-left: 20px;">
-						  <div class="form-group">
-						    &nbsp;&nbsp;<label for="startingprice">Starting Price</label>
-						    &nbsp;&nbsp;<input type="text" class="form-control" id="startingprice" placeholder="$75">
-						  </div>
-						  <div class="form-group">
-						    &nbsp;&nbsp;<label for="autowinprice">Autowin Price</label>
-						    &nbsp;&nbsp;<input type="email" class="form-control" id="autowinprice" placeholder="$200">
-						  </div><br/>
-						  <div class="center-buttons">
-						  <div class="btn-toolbar bidview-homepage-button" role="group" aria-label="...">
-		                  	<%= link_to "Accept", "#", id: 'upload_button2', type: "submit", class: "btn btn-success padded_button" %>
-		                   <%= link_to "Reject", "#", id: 'upload_button3', class: "btn btn-danger padded_button" %>
-		               </div>
-		                </div>
-					</form>
+						<div>
+		       	 			<img src="<%= artwork.attachment_url %>" class ="displayedreview" />
+		       	 			</div>
+		       	 			<br/>
+		       	 			<div>
+		            		<%= form_tag("/review/#{artwork.id}", method: "put") do %>
+							  <%= label_tag(:startingprice, "Starting Price") %>
+							  <%= text_field_tag(:startingprice) %>
+							  <%= label_tag(:autowinprice, "Autowin Price") %>
+							  <%= text_field_tag(:autowinprice) %>
+							  <%= submit_tag "Accept", class: "btn btn-success padded_button bid-btn"%>
+							  <%= submit_tag "Reject", class: "btn btn-danger padded_button bid-btn"%>
+							<% end %>
+						</div>
 				  </div>
 				  <br/><br/>
 				<% end %>

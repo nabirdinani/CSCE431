@@ -68,13 +68,14 @@ Rails.application.routes.draw do
   post      '/login'        =>   'sessions#create'
   delete    '/logout'       =>   'sessions#destroy'
   get                             'sessions/new'
+  put       '/review/:id' => 'review#update', :as => 'update_art'
   resources :users
   resources :artworks do
     resources :bids
   end
   resources :bidview, only: [:index]
   
-  resources :review, only: [:index]
+  resources :review
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
 

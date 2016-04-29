@@ -19,7 +19,7 @@ class UsersController < ApplicationController
         @style = "block"
       end
       
-      @artworksall = Artwork.all
+      @artworksall = Artwork.where(:approved => true)
   	end 
 
   	def new
