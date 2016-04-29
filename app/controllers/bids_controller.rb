@@ -2,7 +2,16 @@ class BidsController < ApplicationController
 	
 
 	def index
-  		@artwork = Artwork.all
+  		@bids = Bid.all
+  		@arthistory = Array.new
+
+  		@bids.each do |bid|
+  			artid = bid.artwork_id
+  			curr_art = Artwork.find(artid)
+  		    @arthistory.push(curr_art)
+  		end
+
+  		
   	end
 
 	def create
@@ -12,7 +21,7 @@ class BidsController < ApplicationController
 		@bid.save!
 		
 		flash[:info] = "Your bid was submitted successfully!!"
-		redirect_to artwork_path(@artwork)
+		redirect_to artwork_bids_path(@artwork)
 	end
 
 end

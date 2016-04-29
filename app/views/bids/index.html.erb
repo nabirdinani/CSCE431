@@ -1,1 +1,6 @@
-This is Nabir. 
+Here is the list of all the arworks you bid on 
+
+ <% @arthistory.each do |art| %> 
+      <img src="<%= art.attachment_url %>" id="displayed" />
+     
+<% end %>
