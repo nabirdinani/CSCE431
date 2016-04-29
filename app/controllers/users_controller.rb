@@ -19,6 +19,7 @@ class UsersController < ApplicationController
         @style = "block"
       end
       
+<<<<<<< HEAD
       @sort = params[:sort_by]
       case @sort
         when 'highest'
@@ -34,6 +35,10 @@ class UsersController < ApplicationController
       
       @artworksall = Artwork.all
   	  end
+=======
+      @artworksall = Artwork.where(:approved => true)
+  	end 
+>>>>>>> cc3718ed399a10e0069649fc673574aa583bbf45
 
   	def new
     	@user = User.new
