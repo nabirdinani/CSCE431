@@ -12,10 +12,10 @@
 # It's strongly recommended that you check this file into your version control system.
 
 <<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20160426055716) do
+ActiveRecord::Schema.define(version: 20160429175244) do
 =======
-ActiveRecord::Schema.define(version: 20160425174334) do
->>>>>>> 6d82d2ed1403960497a008bfaee55e9ed7063a6a
+ActiveRecord::Schema.define(version: 20160429181705) do
+>>>>>>> 1835ccd92aeaaafbeca9d9ca88ad2a42b07e22f2
 
   create_table "artworks", force: :cascade do |t|
     t.string   "name"
@@ -24,13 +24,13 @@ ActiveRecord::Schema.define(version: 20160425174334) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "userid"
-    t.decimal  "start_price"
-    t.decimal  "autowin_price"
+    t.float    "startingprice"
+    t.float    "autowinprice"
     t.boolean  "approved"
   end
 
   create_table "bids", force: :cascade do |t|
-    t.integer  "amount"
+    t.float    "amount"
     t.integer  "user_id"
     t.integer  "artwork_id"
     t.datetime "created_at", null: false
