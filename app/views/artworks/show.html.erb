@@ -26,10 +26,62 @@
                   <td rowspan ="4"><img src="<%= @artwork.attachment_url %>" id="displayed" /></td>
                <td colspan="2">
                <div class="btn-toolbar bidview-homepage-button" role="group" aria-label="...">
-                  <%= link_to "+ $5", "#", id: 'denomination5', class: "btn btn-success padded_button" %>
-                  <%= link_to "+ $10", "#", id: 'denomination10', class: "btn btn-success padded_button" %>
-                  <%= link_to "+ $20", "#", id: 'denomination20', class: "btn btn-success padded_button" %>
-                  <%= link_to "+ $50", "#", id: 'denomination50', class: "btn btn-success padded_button" %>
+                  <!-- <%= link_to "+ $5", "#", id: 'denomination5', class: "btn btn-success padded_button" %> -->
+                  <!-- <%= link_to "+ $10", "#", id: 'denomination10', class: "btn btn-success padded_button" %> -->
+                  <!-- <%= link_to "+ $20", "#", id: 'denomination20', class: "btn btn-success padded_button" %> -->
+                  <!-- <%= link_to "+ $50", "#", id: 'denomination50', class: "btn btn-success padded_button" %> -->
+
+                  <button type="button" id="denomination5" class="btn btn-success padded_button" 
+
+
+                  onclick="var input = parseInt(document.getElementById('amount_id').value) || 0; 
+                  if (input == 0)
+                     document.getElementById('amount_id').value = 5
+                  else
+                     document.getElementById('amount_id').value = input + 5"> 
+
+                     +$5
+                  </button>
+
+                  <button type="button" id="denomination10" class="btn btn-success padded_button" 
+
+
+                  onclick="var input = parseInt(document.getElementById('amount_id').value) || 0; 
+                  if (input == 0)
+                     document.getElementById('amount_id').value = 10
+                  else
+                     document.getElementById('amount_id').value = input + 10"> 
+
+                     +$10
+                  </button>
+
+                  <button type="button" id="denomination20" class="btn btn-success padded_button" 
+
+
+                  onclick="var input = parseInt(document.getElementById('amount_id').value) || 0; 
+                  if (input == 0)
+                     document.getElementById('amount_id').value = 20
+                  else
+                     document.getElementById('amount_id').value = input + 20"> 
+
+                     +$20
+                  </button>
+
+                  <button type="button" id="denomination50" class="btn btn-success padded_button" 
+
+
+                  onclick="var input = parseInt(document.getElementById('amount_id').value) || 0; 
+                  if (input == 0)
+                     document.getElementById('amount_id').value = 50
+                  else
+                     document.getElementById('amount_id').value = input + 50"> 
+
+                     +$50
+                  </button>
+
+                    <button type="button" id="reset" class="btn btn-success padded_button" onclick="document.getElementById('amount_id').value = ''">Reset</button>
+                  
+                 
                </div>
                </td>
             </tr>
@@ -46,11 +98,11 @@
                   <%= form_for ([@artwork, @artwork.bids.build]) do |f| %>
                      <p>
                         <%= f.label :Your_Bid %><br>
-                        <%= f.text_field :amount %>
+                        <%= f.text_field :amount, id: 'amount_id' %>
                      </p>
 
                      <p>
-                        <%= f.submit class: "btn btn-info padded_button bid-btn"%>
+                        <%= f.submit data: { confirm: 'Are you sure you want to place the bid?' }, class: "btn btn-info padded_button bid-btn"%>
                      </p>
                   <% end %>
 
