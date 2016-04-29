@@ -2,15 +2,15 @@ development:
   :address: smtp.gmail.com
   :port: 587
   :authentication: plain
-  :user_name: nabirdinani@gmail.com
-  :password: 
+  :user_name: jasonkrezinski@gmail.com 
+  :password: Nosaj!=9                 
   :enable_starttls_auto: true
 production:
   :address: smtp.gmail.com
   :port: 587
   :authentication: plain
-  :user_name: nabirdinani@gmail.com
-  :password: 
+  :user_name: jasonkrezinski@gmail.com 
+  :password: Nosaj!=9 
   :enable_starttls_auto: true
 
 
