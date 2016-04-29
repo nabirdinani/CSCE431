@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   
 
-	 def show
+	  def show
     	if logged_in?
         begin
           @user = User.find(session[:user_id])
@@ -10,7 +10,7 @@ class UsersController < ApplicationController
           @user = User.create(:name => "Nil", :email => "nil@nil.edu", :password => "nil", :phone => "nil")
         end
         @active = true
-      end
+        end
 
       @artworks = Artwork.where(:userid => session[:user_id])
 
@@ -19,8 +19,21 @@ class UsersController < ApplicationController
         @style = "block"
       end
       
+      @sort = params[:sort_by]
+      case @sort
+        when 'highest'
+          ordering = 'lowest'
+        when 'lowest'
+          ordering = 'lowest'
+        when 'recent'
+          ordering = 'recent'
+        else
+          ordering = 'id'
+      end
+      
+      
       @artworksall = Artwork.all
-  	end 
+  	  end
 
   	def new
     	@user = User.new

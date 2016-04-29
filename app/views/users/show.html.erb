@@ -56,16 +56,16 @@
 							
 						</th>
 			      		<th><div id="right-align">Sort by: <div class="dropdown">
-							  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							  <button class="btn btn-default dropdown-toggle" type="button" id="sort_by_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 							    Dropdown
 							    <span class="caret"></span>
 							  </button>
-							  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-							    <li><a href="#">Lowest Price</a></li>
-							    <li><a href="#">Highest Price</a></li>
-							    <li><a href="#">Most Recently Bid</a></li>
+							  <ul class="dropdown-menu" aria-labelledby="sort_by_dropdown">
+							    <li><a href="/users/<%=@user.id%>?view_style=line&sort_by=lowest">Lowest Price</a></li>
+							    <li><a href="/users/<%=@user.id%>?view_style=line&sort_by=highest">Highest Price</a></li>
+							    <li><a href="/users/<%=@user.id%>?view_style=line&sort_by=recent">Most Recent</a></li>
 							    <li role="separator" class="divider"></li>
-							    <li><a href="#">Default Sort</a></li>
+							    <li><a href="/users/<%=@user.id%>?view_style=line&sort_by=id">Default Sort</a></li>
 							  </ul>
 							</div>
 						</div>
@@ -113,16 +113,16 @@
 								</button> 
 								<% end %></div>
 							<div style="text-align: center;">Sort by: </div><div class="dropdown">
-							  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							  <button class="btn btn-default dropdown-toggle" type="button" id="sort_by_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 							    Dropdown
 							    <span class="caret"></span>
 							  </button>
-							  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-							    <li><a href="#">Lowest Price</a></li>
-							    <li><a href="#">Highest Price</a></li>
-							    <li><a href="#">Most Recently Bid</a></li>
+							  <ul class="dropdown-menu" aria-labelledby="sort_by_dropdown">
+							    <li><a href="/users/<%=@user.id%>?view_style=block&sort_by=lowest">Lowest Price</a></li>
+							    <li><a href="/users/<%=@user.id%>?view_style=block&sort_by=highest">Highest Price</a></li>
+							    <li><a href="/users/<%=@user.id%>?view_style=block&sort_by=recent">Most Recent</a></li>
 							    <li role="separator" class="divider"></li>
-							    <li><a href="#">Default Sort</a></li>
+							    <li><a href="/users/<%=@user.id%>?view_style=block&sort_by=id">Default Sort</a></li>
 							  </ul>
 							</div>
 
