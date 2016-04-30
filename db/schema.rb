@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160429181705) do
+ActiveRecord::Schema.define(version: 20160429211846) do
 
   create_table "artworks", force: :cascade do |t|
     t.string   "name"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20160429181705) do
     t.float    "startingprice"
     t.float    "autowinprice"
     t.boolean  "approved"
+    t.float    "max_bid"
   end
 
   create_table "bids", force: :cascade do |t|

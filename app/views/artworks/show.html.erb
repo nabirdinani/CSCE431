@@ -16,7 +16,7 @@
       <div>
          <br/>
          <input type="hidden" id="endtime" value=<%=@time%>>
-         <h1>Remaining time:</h1>
+         <h2>Remaining time:</h1>
          <h1 id="item_clock">00:00:00</h1>
         </div>
 
@@ -36,11 +36,7 @@
                   <button type="button" id="denomination5" class="btn btn-success padded_button" 
 
 
-<<<<<<< HEAD
-                  onclick="var input = parseInt(document.getElementById('amount_id').value) || 0;
-=======
-                  onclick="var input = parseFloat(document.getElementById('amount_id').value) || 0; 
->>>>>>> f119b33cd5bb1c5966deb1b2b92f9afb20c8548c
+                  onclick="var input = parseFloat(document.getElementById('amount_id').value) || 0;
                   if (input == 0)
                      document.getElementById('amount_id').value = 5
                   else
@@ -128,17 +124,6 @@
                   <%= link_to "Buy It Now", "#", id: 'buy_now_btn', class: 'btn btn-info padded_button bid-btn' %>
                </td>
             </tr>
-            <tr>
-               <td>
-                  <table>
-                     <tr class ='btn-toolbar' >
-                        <td><%= image_tag('#', size: "60x50", alt: "image", class: "btn padded_button") %></td>
-                        <td><%= image_tag('#', size: "60x50", alt: "image", class: "btn padded_button") %></td>
-                        <td><%= image_tag('#', size: "60x50", alt: "image", class: "btn padded_button") %></td>
-                     </tr>
-                  </table>
-               </td>
-            </tr>
          
 
 
@@ -165,7 +150,7 @@
    <script>
 
        var end = new Date(parseInt(document.getElementById('endtime').value));
- alert(document.getElementById('endtime').value);
+
        var _second = 1000;
        var _minute = _second * 60;
        var _hour = _minute * 60;
@@ -186,11 +171,15 @@
            var hours = Math.floor((distance % _day) / _hour);
            var minutes = Math.floor((distance % _hour) / _minute);
            var seconds = Math.floor((distance % _minute) / _second);
+           if (days < 10) days = '0' + days;
+           if (hours < 10) hours = '0' + hours;
+           if (minutes < 10) minutes = '0' + minutes;
+           if (seconds < 10) seconds = '0' + seconds;
 
-           document.getElementById('item_clock').innerHTML = days + ' days ';
-           document.getElementById('item_clock').innerHTML += hours + ' hrs ';
-           document.getElementById('item_clock').innerHTML += minutes + ' mins ';
-           document.getElementById('item_clock').innerHTML += seconds + ' secs';
+           document.getElementById('item_clock').innerHTML = days + ':';
+           document.getElementById('item_clock').innerHTML += hours + ':';
+           document.getElementById('item_clock').innerHTML += minutes + ':';
+           document.getElementById('item_clock').innerHTML += seconds;
        }
 
        timer = setInterval(showRemaining, 1000);
