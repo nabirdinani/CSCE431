@@ -11,7 +11,7 @@
       		</script>
     	<![endif]-->
   	</head>
-  	<body>
+  	<body onload="startTime()">
 <% if @active %>
 		<h1>Hello, <%= @user.name %>!</h1>
 
@@ -33,7 +33,7 @@
 
 		  <div>
 		  	<br/>
-		  	<h1 id="countdown">03:34:58</h1>
+		  	<h1 id="countdown">00:00:00</h1>
 		  </div>
 
 		  <% if @style == "line" %>
@@ -78,7 +78,7 @@
 				            <td><img src="<%= artwork.attachment_url %>" id="displayed" /></td>
 				            <td>
 				            	<div class="btn-toolbar bidview-homepage-button" role="group" aria-label="...">
-				                <%= link_to "More Details", url_for(:controller => :artworks, :action => :show), id: 'upload_button1', class: "btn btn-info padded_button" %>
+				                <%= link_to "More Details", "/artworks/#{artwork.id}", id: 'upload_button1', class: "btn btn-info padded_button" %>
 				                
 				                <%= link_to "Watch Item", "#", id: 'upload_button3', class: "btn btn-success padded_button" %></td>
 				            </div>
@@ -133,7 +133,7 @@
 					      		<img src="<%= artwork1.attachment_url %>" id="displayed"/><br/>
 					            	<div class="sort_buttons">
 					            <div class="btn-toolbar" role="group" aria-label="...">
-								<%= link_to "More Details", url_for(:controller => :artworks, :action => :show), id: 'upload_button1', class: "btn btn-info padded_button_block" %>
+								<%= link_to "More Details", "/artworks/#{artwork1.id}", id: 'upload_button1', class: "btn btn-info padded_button_block" %>
 					            <span></span>
 					            <%= link_to "Watch Item", "#", id: 'upload_button3', class: "btn btn-success padded_button_block" %></div></div>
 				          
@@ -141,7 +141,7 @@
 					     		<img src="<%= artwork2.attachment_url %>" id="displayed"/><br/>
 					            	<div class="sort_buttons">
 					            <div class="btn-toolbar" role="group" aria-label="...">
-								<%= link_to "More Details", url_for(:controller => :artworks, :action => :show), id: 'upload_button1', class: "btn btn-info padded_button_block" %>
+								<%= link_to "More Details", "/artworks/#{artwork2.id}", id: 'upload_button1', class: "btn btn-info padded_button_block" %>
 					           
 					            <span></span>
 					            <%= link_to "Watch Item", "#", id: 'upload_button3', class: "btn btn-success padded_button_block" %></div></div>
@@ -205,5 +205,31 @@
 	  	<% end %>    
 
   	</body>
+
+  	<script>
+  		function startTime() {
+		    var today = new Date();
+		    var hours = today.getHours();
+		    var m = today.getMinutes();
+		    var s = today.getSeconds();
+		    var ampm;
+		    if (hours > 12) {
+			    hours -= 12;
+			    ampm = " PM";
+			} else if (hours === 0) {
+			   hours = 12;
+			    ampm =" AM";
+			}
+		    m = checkTime(m);
+		    s = checkTime(s);
+		    document.getElementById('countdown').innerHTML =
+		    hours + ":" + m + ":" + s + " " + ampm;
+		    var t = setTimeout(startTime, 500);
+		}
+		function checkTime(i) {
+		    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+		    return i;
+		}
+	</script>
 
  </html>

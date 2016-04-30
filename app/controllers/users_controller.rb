@@ -37,6 +37,11 @@ class UsersController < ApplicationController
     	end
   	end
 
+    def give_time
+      @time = Time.now.utc.to_s.split(" ").second
+      render :partial => 'shared/time_portion'
+    end
+
   	private
 
   	def user_params

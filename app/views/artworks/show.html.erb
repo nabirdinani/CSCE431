@@ -11,11 +11,13 @@
             </script>
       <![endif]-->
    </head>
-   <body>
+   <body onload="startTime()">
       <h1><%= @artwork.name%></h1>
       <div>
          <br/>
-         <h1 id="countdown">03:34:58</h1>
+         <input type="hidden" id="endtime" value=<%=@time%>>
+         <h1>Remaining time:</h1>
+         <h1 id="item_clock">00:00:00</h1>
         </div>
 
    <table class="table table-vcenter">
@@ -34,7 +36,7 @@
                   <button type="button" id="denomination5" class="btn btn-success padded_button" 
 
 
-                  onclick="var input = parseInt(document.getElementById('amount_id').value) || 0; 
+                  onclick="var input = parseInt(document.getElementById('amount_id').value) || 0;
                   if (input == 0)
                      document.getElementById('amount_id').value = 5
                   else
@@ -155,5 +157,39 @@
    <% end %>
 
    </body>
+
+   <script>
+
+       var end = new Date(parseInt(document.getElementById('endtime').value));
+ alert(document.getElementById('endtime').value);
+       var _second = 1000;
+       var _minute = _second * 60;
+       var _hour = _minute * 60;
+       var _day = _hour * 24;
+       var timer;
+
+       function showRemaining() {
+           var now = new Date();
+           var distance = end - now;
+           if (distance < 0) {
+
+               clearInterval(timer);
+               document.getElementById('item_clock').innerHTML = 'EXPIRED!';
+
+               return;
+           }
+           var days = Math.floor(distance / _day);
+           var hours = Math.floor((distance % _day) / _hour);
+           var minutes = Math.floor((distance % _hour) / _minute);
+           var seconds = Math.floor((distance % _minute) / _second);
+
+           document.getElementById('item_clock').innerHTML = days + ' days ';
+           document.getElementById('item_clock').innerHTML += hours + ' hrs ';
+           document.getElementById('item_clock').innerHTML += minutes + ' mins ';
+           document.getElementById('item_clock').innerHTML += seconds + ' secs';
+       }
+
+       timer = setInterval(showRemaining, 1000);
+   </script>
 
  </html>

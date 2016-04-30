@@ -10,6 +10,7 @@ class ArtworksController < ApplicationController
 
   def show
     @artwork = Artwork.find(params[:id])
+    @time = (1.hour.from_now).to_f * 1000
   end
 
   def create
