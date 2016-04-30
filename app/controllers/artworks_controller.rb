@@ -10,7 +10,9 @@ class ArtworksController < ApplicationController
 
   def show
     @artwork = Artwork.find(params[:id])
-    @time = @artwork.expiretime.to_f * 1000
+    @expiretime = @artwork.expiretime.to_f * 1000
+    @opentime = @artwork.opentime.to_f * 1000
+    @timenow = (Time.now).to_f * 1000
   end
 
   def create
