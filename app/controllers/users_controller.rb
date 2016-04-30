@@ -2,14 +2,14 @@ class UsersController < ApplicationController
 
   
 
-	 def show
+	  def show
     	if logged_in?
-        begin
-          @user = User.find(session[:user_id])
-        rescue ActiveRecord::RecordNotFound => e
-          @user = User.create(:name => "Nil", :email => "nil@nil.edu", :password => "nil", :phone => "nil")
-        end
-        @active = true
+          begin
+            @user = User.find(session[:user_id])
+          rescue ActiveRecord::RecordNotFound => e
+            @user = User.create(:name => "Nil", :email => "nil@nil.edu", :password => "nil", :phone => "nil")
+          end
+          @active = true
       end
 
       @artworks = Artwork.where(:userid => session[:user_id])
@@ -19,7 +19,24 @@ class UsersController < ApplicationController
         @style = "block"
       end
       
-      @artworksall = Artwork.where(:approved => true)
+      @sort = params[:sort_by]
+      case @sort
+        when 'highest'
+          @artworksall = Artwork.where(:approved => true).order(max_bid: :desc)
+        when 'lowest'
+          @artworksall = Artwork.where(:approved => true).order(max_bid: :asc)
+        when 'highestBN'
+          @artworksall = Artwork.where(:approved => true).order(autowinprice: :desc)
+        when 'lowestBN'
+          @artworksall = Artwork.where(:approved => true).order(autowinprice: :asc)
+        when 'recent'
+          @artworksall = Artwork.where(:approved => true).order(created_at: :desc)
+        else
+          @artworksall = Artwork.where(:approved => true)
+      end
+      
+
+      
   	end 
 
   	def new
@@ -48,5 +65,6 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :phone, :email, :password,
                                    :password_confirmation)
     end
-
+    
 end
+
