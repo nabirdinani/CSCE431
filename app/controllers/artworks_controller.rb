@@ -18,6 +18,7 @@ class ArtworksController < ApplicationController
   def create
   	@artwork = Artwork.new(artwork_params)
     @artwork.userid = session[:user_id]
+    @artwork.max_bid = 0
 	  if @artwork.save
       flash[:success] = "The picture #{@artwork.name} has been submitted."
       redirect_to url_for(:controller => :users, :action => :show, :id => session[:user_id])

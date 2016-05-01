@@ -80,9 +80,10 @@
 				            <td><img src="<%= artwork.attachment_url %>" id="displayed" /></td>
 				            <td>
 				            	<div class="btn-toolbar bidview-homepage-button" role="group" aria-label="...">
+				            		 <span style="height: 34px;"class="label label-primary padded_button_block">Current bid: $<%= '%.2f' % artwork.max_bid%></span>
 				                <%= link_to "More Details", "/artworks/#{artwork.id}", id: 'upload_button1', class: "btn btn-info padded_button" %>
 				                
-				                <%= link_to "Watch Item", "#", id: 'upload_button3', class: "btn btn-success padded_button" %></td>
+				                <%= link_to "Watch Item", watch_path(:id => artwork.id), id: 'upload_button3', class: "btn btn-success padded_button" %></td>
 				            </div>
 				          </tr>
 				         
@@ -143,9 +144,10 @@
 							      		<img src="<%= artwork1.attachment_url %>" id="displayed"/><br/>
 							            <div class="sort_buttons">
 							            	<div class="btn-toolbar" role="group" aria-label="...">
+							            		 <span style="height: 34px;"class="label label-primary padded_button_block">Current bid: $<%= '%.2f' % artwork1.max_bid%></span>
 												<%= link_to "More Details", "/artworks/#{artwork1.id}", id: 'upload_button1', class: "btn btn-info padded_button_block" %>
 							            		<span></span>
-							            		<%= link_to "Watch Item", "#", id: 'upload_button3', class: "btn btn-success padded_button_block" %>
+							            		<%= link_to "Watch Item", watch_path(:id => artwork1.id), id: 'upload_button3', class: "btn btn-success padded_button_block" %>
 							        		</div>
 							    		</div>
 				          			</div>
@@ -154,10 +156,11 @@
 									     		<img src="<%= artwork2.attachment_url %>" id="displayed"/><br/>
 									            	<div class="sort_buttons">
 									            <div class="btn-toolbar" role="group" aria-label="...">
+									            <span style="height: 34px;"class="label label-primary padded_button_block">Current bid: $<%= '%.2f' % artwork2.max_bid%></span>
 												<%= link_to "More Details", "/artworks/#{artwork2.id}", id: 'upload_button1', class: "btn btn-info padded_button_block" %>
 									           
 									            <span></span>
-									            <%= link_to "Watch Item", "#", id: 'upload_button3', class: "btn btn-success padded_button_block" %>
+									            <%= link_to "Watch Item", watch_path(:id => artwork2.id), id: 'upload_button3', class: "btn btn-success padded_button_block" %>
 									        </div></div>
 								    </div>    
 								    <% end %>

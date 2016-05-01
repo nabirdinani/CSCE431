@@ -93,7 +93,7 @@
             <tr>
                <td>
                      <label for='current_bid'>Current Bid</label>
-                     <label id='current_bid' type='text'>$55.45</lable>
+                     <label id='current_bid' type='text'>$<%= '%.2f' % @artwork.max_bid%></lable>
                </td>
                <td class='bid-input'>
                   <!-- <label for='bid_amount'>Your bid</label> -->
@@ -120,7 +120,7 @@
             <tr>
                <td>
                   <label for='buy_out_price'>Buy it now price</label>
-                  <label id='buy_out_price' type='text'>$70.12</lable>
+                  <label id='buy_out_price' type='text'>$<%= '%.2f' % @artwork.autowinprice%></lable>
 
                </td>
                <td>

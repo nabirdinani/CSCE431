@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  
+
 
   get 'password_resets/new'
 
@@ -70,6 +70,7 @@ Rails.application.routes.draw do
   get                             'sessions/new'
   put       '/review/:id' => 'review#update', :as => 'update_art'
   resources :users
+  resources :watch
   resources :artworks do
     resources :bids
   end

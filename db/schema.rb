@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160430211923) do
+ActiveRecord::Schema.define(version: 20160501195509) do
 
   create_table "artworks", force: :cascade do |t|
     t.string   "name"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20160430211923) do
     t.datetime "expiretime"
     t.datetime "opentime"
     t.boolean  "openbid"
+    t.string   "watchlist"
   end
 
   create_table "bids", force: :cascade do |t|
@@ -54,6 +55,7 @@ ActiveRecord::Schema.define(version: 20160430211923) do
     t.datetime "reset_sent_at"
     t.boolean  "admin"
     t.string   "remember_digest"
+    t.string   "watchlist"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
