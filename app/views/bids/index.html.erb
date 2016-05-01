@@ -1,5 +1,6 @@
-Here is the list of all the arworks you bid on 
+<% if logged_in? %>
 
+<h1>Bid History</h1>
 <% @hash.each do |art, bidarray| %>
 	<h2><%= art.name %></h2>
   	<img id="displayed" src=<%= art.attachment_url %>/>
@@ -16,5 +17,10 @@ Here is the list of all the arworks you bid on
   		</tr>
   		<% end %>
 	</table>
+	<hr>
 
+<% end %>
+
+<% else %>
+	You must login to view this page.
 <% end %>
