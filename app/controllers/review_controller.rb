@@ -20,7 +20,8 @@ class ReviewController < ApplicationController
   	  @admin = false
   	end
 
-    @artworks = Artwork.where(:approved => nil)
+    #@artworks = Artwork.where(:approved => nil)
+    @artworks = Artwork.all
   end
 
   def update

@@ -130,29 +130,42 @@
 							  </ul>
 							</div>
 
-							</div><br/>
+							</div>
+							<br/>
+
+
+
+				     	 	
 							<div style="text-align: center;">
-				     	 <% @artworksall.each_slice(2) do |artwork1, artwork2| %> 
-				     	 	<div style="display: inline-block;">
-					      		<img src="<%= artwork1.attachment_url %>" id="displayed"/><br/>
-					            	<div class="sort_buttons">
-					            <div class="btn-toolbar" role="group" aria-label="...">
-								<%= link_to "More Details", "/artworks/#{artwork1.id}", id: 'upload_button1', class: "btn btn-info padded_button_block" %>
-					            <span></span>
-					            <%= link_to "Watch Item", "#", id: 'upload_button3', class: "btn btn-success padded_button_block" %></div></div>
-				          
-					<% if artwork2 != nil %>
-					     		<img src="<%= artwork2.attachment_url %>" id="displayed"/><br/>
-					            	<div class="sort_buttons">
-					            <div class="btn-toolbar" role="group" aria-label="...">
-								<%= link_to "More Details", "/artworks/#{artwork2.id}", id: 'upload_button1', class: "btn btn-info padded_button_block" %>
-					           
-					            <span></span>
-					            <%= link_to "Watch Item", "#", id: 'upload_button3', class: "btn btn-success padded_button_block" %></div></div>
-				            </div>
-				            <% end %>
-				      <% end %>
-				  </div>
+						    <% @artworksall.each_slice(2) do |artwork1, artwork2| %> 
+						    	<div class="row row-container">
+						    		<div class ="col-md-6">
+							      		<img src="<%= artwork1.attachment_url %>" id="displayed"/><br/>
+							            <div class="sort_buttons">
+							            	<div class="btn-toolbar" role="group" aria-label="...">
+												<%= link_to "More Details", "/artworks/#{artwork1.id}", id: 'upload_button1', class: "btn btn-info padded_button_block" %>
+							            		<span></span>
+							            		<%= link_to "Watch Item", "#", id: 'upload_button3', class: "btn btn-success padded_button_block" %>
+							        		</div>
+							    		</div>
+				          			</div>
+									<% if artwork2 != nil %>
+									<div class="col-md-6">
+									     		<img src="<%= artwork2.attachment_url %>" id="displayed"/><br/>
+									            	<div class="sort_buttons">
+									            <div class="btn-toolbar" role="group" aria-label="...">
+												<%= link_to "More Details", "/artworks/#{artwork2.id}", id: 'upload_button1', class: "btn btn-info padded_button_block" %>
+									           
+									            <span></span>
+									            <%= link_to "Watch Item", "#", id: 'upload_button3', class: "btn btn-success padded_button_block" %>
+									        </div></div>
+								    </div>    
+								    <% end %>
+								</div>
+				      		<% end %>	
+
+				  			</div>
+				  			
 
 
 	  			
