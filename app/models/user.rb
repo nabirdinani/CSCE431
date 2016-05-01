@@ -56,6 +56,14 @@ class User < ActiveRecord::Base
     UserMailer.account_activation(self).deliver_now
   end
 
+  def send_bid_notification_email(artwork, bid)
+    UserMailer.bid_notification(self, artwork, bid).deliver_now
+  end
+
+  def send_outbid_notification_email(artwork)
+    UserMailer.outbid_notification(self, artwork).deliver_now
+  end
+
   # Sets the password reset attributes.
   def create_reset_digest
     self.reset_token = User.new_token

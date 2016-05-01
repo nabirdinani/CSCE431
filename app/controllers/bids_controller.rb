@@ -21,18 +21,25 @@ class BidsController < ApplicationController
   					array.push(bidd)
   				end
   			end
-  			@hash[art] = array
+  			@hash[art] = array.reverse!
   		end
   		
   		
   	end
 
 	def create
+    @user = User.find(session[:user_id])
 		@artwork = Artwork.find(params[:artwork_id])
 		@bid = @artwork.bids.create(params[:bid].permit(:amount))
 		@bid.user_id = session[:user_id]
 		if @bid.save
 		  flash[:info] = "Your bid was submitted successfully!"
+      @prev_bids = Bid.where(:artwork_id => @artwork.id)
+      if @prev_bids.size > 1 # someone else has been outbid
+        @losing = User.find(@prev_bids[@prev_bids.size - 2].user_id)
+        @losing.send_outbid_notification_email(@artwork)
+      end 
+      @user.send_bid_notification_email(@artwork, @bid)
     else 
       flash[:danger] = "Your bid could not be submitted. Try again soon."
     end
