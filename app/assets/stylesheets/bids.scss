@@ -27,6 +27,10 @@
 	margin-bottom: 10px;
 }
 
+.table-nonfluid {
+   width: auto !important;
+}
+
 .table-vcenter td {
    vertical-align: middle!important;
 }
@@ -56,4 +60,10 @@ table th {
 
 .bid-btn{
 	width:200px;
+}
+
+.center-table
+{
+  margin: 0 auto !important;
+  float: none !important;
 }

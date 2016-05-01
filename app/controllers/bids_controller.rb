@@ -2,15 +2,28 @@ class BidsController < ApplicationController
 	
 
 	def index
-  		@bids = Bid.all
-  		@arthistory = Array.new
+  		@bids = Bid.where(:user_id => session[:user_id])
+  		@art_items_bid_on = Array.new
 
   		@bids.each do |bid|
   			artid = bid.artwork_id
   			curr_art = Artwork.find(artid)
-  		    @arthistory.push(curr_art)
+  		    @art_items_bid_on.push(curr_art)
   		end
 
+  		@art_items_bid_on = @art_items_bid_on.uniq
+
+  		@hash = Hash.new
+  		@art_items_bid_on.each do |art|
+  			array = Array.new
+  			@bids.each do |bidd|
+  				if bidd.artwork_id == art.id 
+  					array.push(bidd)
+  				end
+  			end
+  			@hash[art] = array
+  		end
+  		
   		
   	end
 

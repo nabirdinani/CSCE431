@@ -1,6 +1,20 @@
 Here is the list of all the arworks you bid on 
 
- <% @arthistory.each do |art| %> 
-      <img src="<%= art.attachment_url %>" id="displayed" />
-     
+<% @hash.each do |art, bidarray| %>
+	<h2><%= art.name %></h2>
+  	<img id="displayed" src=<%= art.attachment_url %>/>
+  	<br/>
+  	<table class="table table-condensed table-nonfluid center-table">
+ 	  <tr>	
+ 		<th>Amount</th>
+ 		<th>Time</th>
+ 	  </tr>
+ 		<% bidarray.each do |bid| %>
+  		<tr>
+  			<td><%= '$%.2f' % bid.amount %></td>
+  			<td><%= bid.created_at %></td>
+  		</tr>
+  		<% end %>
+	</table>
+
 <% end %>
