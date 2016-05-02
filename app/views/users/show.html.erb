@@ -83,7 +83,11 @@
 				            		 <span style="height: 34px;"class="label label-primary padded_button_block">Current bid: $<%= '%.2f' % artwork.max_bid%></span>
 				                <%= link_to "More Details", "/artworks/#{artwork.id}", id: 'upload_button1', class: "btn btn-info padded_button" %>
 				                
-				                <%= link_to "Watch Item", watch_path(:id => artwork.id), id: 'upload_button3', class: "btn btn-success padded_button" %></td>
+				                <% if @hash[artwork.id] %>
+				                	<%= link_to "Unwatch Item", watch_path(:id => artwork.id), id: 'upload_button3', class: "btn btn-success padded_button" %></td>
+				                <% else %>
+				                	<%= link_to "Watch Item", watch_path(:id => artwork.id), id: 'upload_button3', class: "btn btn-success padded_button" %></td>
+				                <% end %>
 				            </div>
 				          </tr>
 				         
@@ -147,7 +151,11 @@
 							            		 <span style="height: 34px;"class="label label-primary padded_button_block">Current bid: $<%= '%.2f' % artwork1.max_bid%></span>
 												<%= link_to "More Details", "/artworks/#{artwork1.id}", id: 'upload_button1', class: "btn btn-info padded_button_block" %>
 							            		<span></span>
-							            		<%= link_to "Watch Item", watch_path(:id => artwork1.id), id: 'upload_button3', class: "btn btn-success padded_button_block" %>
+							            		<% if @hash[artwork1.id] %>
+									            <%= link_to "Unwatch Item", watch_path(:id => artwork1.id), id: 'upload_button3', class: "btn btn-success padded_button_block" %>
+									            <% else %>
+									            	 <%= link_to "Watch Item", watch_path(:id => artwork1.id), id: 'upload_button3', class: "btn btn-success padded_button_block" %>
+									            <% end %>
 							        		</div>
 							    		</div>
 				          			</div>
@@ -160,7 +168,11 @@
 												<%= link_to "More Details", "/artworks/#{artwork2.id}", id: 'upload_button1', class: "btn btn-info padded_button_block" %>
 									           
 									            <span></span>
-									            <%= link_to "Watch Item", watch_path(:id => artwork2.id), id: 'upload_button3', class: "btn btn-success padded_button_block" %>
+									            <% if @hash[artwork2.id] %>
+									            <%= link_to "Unwatch Item", watch_path(:id => artwork2.id), id: 'upload_button3', class: "btn btn-success padded_button_block" %>
+									            <% else %>
+									            	 <%= link_to "Watch Item", watch_path(:id => artwork2.id), id: 'upload_button3', class: "btn btn-success padded_button_block" %>
+									            <% end %>
 									        </div></div>
 								    </div>    
 								    <% end %>
@@ -223,7 +235,6 @@
 	  	<% else %>
 	      You must be logged in to view this page.
 	  	<% end %>    
-
   	</body>
 
   	<script>

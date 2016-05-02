@@ -34,6 +34,19 @@ class UsersController < ApplicationController
         else
           @artworksall = Artwork.where(:approved => true)
       end
+
+      @hash = Hash.new
+      @artworks.each do |art|
+        if art.watchlist != nil
+          if art.watchlist.include? @user.id.to_s
+            @hash[art.id] = true
+          else
+            @hash[art.id] = false
+          end
+        else
+          @hash[art.id] = false
+        end
+      end
       
 
       
