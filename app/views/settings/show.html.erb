@@ -1,0 +1,94 @@
+<% if logged_in? %>
+
+<br/>
+<br/>
+	
+	<hr>
+	<br/>
+	<div style="text-align: center;">
+		<table class="table table-condensed table-nonfluid center-table">
+			<thead>
+			      <tr style="background-color: grey;">
+			         <th></th>
+			         <th></th>
+			      </tr>
+			      <tr>
+			         <th></th>
+			         <th></th>
+			      </tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Name</td>
+					<td><%= @user.name %></td>
+				</tr>
+				<tr>
+					<td>Phone Number</td>
+					<td><%= @user.phone%></td>
+				</tr>
+				<tr>
+					<td>E-mail</td>
+					<td><%= @user.email%></td>
+				</tr>
+				<tr>
+					<td>Anonymous Mode*</td>
+					<% if @user.anon %>
+						<td>Yes</td>
+					<% else %>
+						<td>No</td>
+					<%end%>
+				</tr>
+				<tr>
+					<td>Admin</td>
+					<% if @user.admin %>
+					<td>Yes</td>
+					<% else %>
+					<td>No</td>
+					<%end%>
+				</tr>
+				<tr>
+					<td>Account created</td>
+					<td><%= @user.created_at %></td>
+				</tr>
+
+				<tr><td></td><td></td></tr>
+				<tr><td></td><td></td></tr>
+				<tr><td></td><td></td></tr>
+				<tr><td style="font-weight: bold">Options</td><td></td></tr>
+				<tr><td>Password</td><td><%= link_to "Reset Password", new_password_reset_path %></td></tr>
+				<tr><td>Anonymous Mode</td><td><%= link_to "Change", "/settings/#{@user.id}", :method => :put %></td></tr>
+				<tr><td></td><td></td></tr>
+				<tr style="background-color: grey;">
+			         <td></td>
+			         <td></td>
+			    </tr>
+			</tbody>
+
+		</table>
+
+	<br/>
+	<br/>
+	<br/>
+	*When you bid, your name will be displayed on the item's detail page. Anonymous mode will conceal your identity.
+	</div>
+	<hr>
+
+<% else %>
+	You must be logged in to view this page.
+
+<% end %>
+
+<!-- t.string   "name"
+t.string   "phone"
+t.string   "email"
+t.datetime "created_at",                        null: false
+t.datetime "updated_at",                        null: false
+t.string   "password_digest"
+t.string   "activation_digest"
+t.boolean  "activated",         default: false
+t.datetime "activated_at"
+t.string   "reset_digest"
+t.datetime "reset_sent_at"
+t.boolean  "admin"
+t.string   "remember_digest"
+t.string   "watchlist" -->

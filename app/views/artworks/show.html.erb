@@ -93,7 +93,18 @@
             <tr>
                <td>
                      <label for='current_bid'>Current Bid</label>
-                     <label id='current_bid' type='text'>$<%= '%.2f' % @artwork.max_bid%></lable>
+                     <label id='current_bid' type='text'>$<%= '%.2f' % @artwork.max_bid%> by 
+                        <% if @anyone %>
+                          <% if @anon %>
+                            Anonymous
+                          <% else %>
+                            <%= @leadbidder.name %>
+                          <% end %>
+                        <% else %>
+                          N/A
+                        <% end %>
+
+                     </label>
                </td>
                <td class='bid-input'>
                   <!-- <label for='bid_amount'>Your bid</label> -->
@@ -140,7 +151,9 @@
    <div class="sort_buttons">
       <br/>
       <br/>
-      <%= link_to "Back To Home page", "#", id: 'home_btn', class: "btn btn-primary" %>
+      <%= link_to "Back To Home page", "/users/#{@user.id}", id: 'home_btn', class: "btn btn-primary" %>
+      <br/>
+      <br/>
    </div>
       
    <% if @active %>

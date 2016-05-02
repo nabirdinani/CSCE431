@@ -9,10 +9,21 @@ class ArtworksController < ApplicationController
   end
 
   def show
+    @user = User.find(session[:user_id])
     @artwork = Artwork.find(params[:id])
     @expiretime = @artwork.expiretime.to_f * 1000
     @opentime = @artwork.opentime.to_f * 1000
     @timenow = (Time.now).to_f * 1000
+   
+
+    # for anonymous mode
+    if @artwork.leadinguser == nil
+      @anyone = false
+    else
+      @anyone = true
+      @leadbidder = User.find(@artwork.leadinguser)
+      @anon = @leadbidder.anon
+    end
   end
 
   def create

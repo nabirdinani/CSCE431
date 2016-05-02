@@ -57,6 +57,7 @@ class BidsController < ApplicationController
         @artwork.max_bid = @bid.amount
       end
     end
+    @artwork.leadinguser = @user.id.to_s
     @artwork.save
 		@bid.user_id = session[:user_id]
 		if @bid.save

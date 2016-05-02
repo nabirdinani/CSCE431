@@ -70,6 +70,7 @@ Rails.application.routes.draw do
   get                             'sessions/new'
   put       '/review/:id' => 'review#update', :as => 'update_art'
   resources :users
+  resources :settings
   resources :watch
   resources :artworks do
     resources :bids
