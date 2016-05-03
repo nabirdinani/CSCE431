@@ -110,33 +110,36 @@
 			  <br/> <br/> <br/>
 			<% else %>
 					
-			      			<div class="sort_buttons"><div class="sort_buttons">
-				      			<%= link_to("/users/#{@user.id}?view_style=line") do %>
-				      			<button type="button" class="btn btn-default">
-								  <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-								</button>
-								<%end%>
-								<span>                    </span>
-								<%= link_to("/users/#{@user.id}?view_style=block") do %>
-								  <button type="button" class="btn btn-default" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-th-large " aria-hidden="true"></span>
-								</button> 
-								<% end %></div>
-							<div style="text-align: center;">Sort by: </div><div class="dropdown">
-							  <button class="btn btn-default dropdown-toggle" type="button" id="sort_by_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-							    Dropdown
-							    <span class="caret"></span>
-							  </button>
-							  <ul class="dropdown-menu" aria-labelledby="sort_by_dropdown">
-							    <li><a href="/users/<%=@user.id%>?view_style=block&sort_by=lowest">Lowest Bid</a></li>
-							    <li><a href="/users/<%=@user.id%>?view_style=block&sort_by=highest">Highest Bid</a></li>
-							    <li><a href="/users/<%=@user.id%>?view_style=block&sort_by=highestBN">Highest Buy Now</a></li>
-							    <li><a href="/users/<%=@user.id%>?view_style=block&sort_by=lowestBN">Lowest Buy Now</a></li>
-							    <li><a href="/users/<%=@user.id%>?view_style=block&sort_by=recent">Most Recent</a></li>
-							    <li role="separator" class="divider"></li>
-							    <li><a href="/users/<%=@user.id%>?view_style=block&sort_by=id">Default Sort</a></li>
-							  </ul>
-							</div>
+			      			<div class="sort_buttons">
+			      				<div class="sort_buttons">
+					      			<%= link_to("/users/#{@user.id}?view_style=line") do %>
+						      			<button type="button" class="btn btn-default">
+										  <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+										</button>
+									<%end%>
+									<span>                    </span>
+									<%= link_to("/users/#{@user.id}?view_style=block") do %>
+										  <button type="button" class="btn btn-default" aria-label="Left Align">
+										  <span class="glyphicon glyphicon-th-large " aria-hidden="true"></span>
+										</button> 
+									<% end %>
+								</div>
+								<div style="text-align: center;">Sort by: </div>
+								<div class="dropdown">
+								  <button class="btn btn-default dropdown-toggle" type="button" id="sort_by_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								    Dropdown
+								    <span class="caret"></span>
+								  </button>
+								  <ul class="dropdown-menu" aria-labelledby="sort_by_dropdown">
+								    <li><a href="/users/<%=@user.id%>?view_style=block&sort_by=lowest">Lowest Bid</a></li>
+								    <li><a href="/users/<%=@user.id%>?view_style=block&sort_by=highest">Highest Bid</a></li>
+								    <li><a href="/users/<%=@user.id%>?view_style=block&sort_by=highestBN">Highest Buy Now</a></li>
+								    <li><a href="/users/<%=@user.id%>?view_style=block&sort_by=lowestBN">Lowest Buy Now</a></li>
+								    <li><a href="/users/<%=@user.id%>?view_style=block&sort_by=recent">Most Recent</a></li>
+								    <li role="separator" class="divider"></li>
+								    <li><a href="/users/<%=@user.id%>?view_style=block&sort_by=id">Default Sort</a></li>
+								  </ul>
+								</div>
 
 							</div>
 							<br/>
@@ -187,7 +190,7 @@
 
 
 	  			
-			  </div>
+			  
 
 			  <div class="sort_buttons">
 	  				<br/>
