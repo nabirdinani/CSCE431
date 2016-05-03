@@ -28,6 +28,9 @@
 				<%= link_to "Review Submitted Artwork", url_for(:controller => :review, :action => :index), id: 'approve_artwork', class: "submit_but btn btn-success" %>
 				<br />
 			<% end %>
+				<br/>
+				<%= link_to "View Bid History", "/artworks/1/bids", id: 'view_bid_history', class: "submit_but btn btn-info" %>
+				<br />
 
 			
 
@@ -84,11 +87,11 @@
 				                <%= link_to "More Details", "/artworks/#{artwork.id}", id: 'upload_button1', class: "btn btn-info padded_button" %>
 				                
 				                <% if @hash[artwork.id] %>
-				                	<%= link_to "Unwatch Item", watch_path(:id => artwork.id), id: 'upload_button3', class: "btn btn-success padded_button" %></td>
+				                	<%= link_to "Unwatch Item", watch_path(:id => artwork.id), id: 'upload_button3', class: "btn btn-success padded_button" %></div></td>
 				                <% else %>
-				                	<%= link_to "Watch Item", watch_path(:id => artwork.id), id: 'upload_button3', class: "btn btn-success padded_button" %></td>
+				                	<%= link_to "Watch Item", watch_path(:id => artwork.id), id: 'upload_button3', class: "btn btn-success padded_button" %></div></td>
 				                <% end %>
-				            </div>
+				            
 				          </tr>
 				         
 				      	<% end %>
