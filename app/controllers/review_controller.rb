@@ -44,8 +44,22 @@ class ReviewController < ApplicationController
             end
             return
           end
-
-
+          
+          begin
+            Float(params[:startingprice])
+          rescue
+            flash[:info] = "Prices must be number amounts"
+            redirect_to(review_index_path) and return
+          end
+          
+          
+          begin
+            Float(params[:autowinprice])
+          rescue
+            flash[:info] = "Prices must be number amounts"
+            redirect_to(review_index_path) and return
+          end
+          
           @artwork.startingprice = params[:startingprice]
           @artwork.autowinprice = params[:autowinprice]
           @artwork.approved = true
