@@ -36,7 +36,7 @@ class UsersController < ApplicationController
       end
 
       @hash = Hash.new
-      @artworks.each do |art|
+      @artworksall.each do |art|
         if art.watchlist != nil
           if art.watchlist.include? @user.id.to_s
             @hash[art.id] = true
@@ -47,8 +47,6 @@ class UsersController < ApplicationController
           @hash[art.id] = false
         end
       end
-      
-
       
   	end 
 
