@@ -56,11 +56,11 @@ class ArtworksController < ApplicationController
 
   def destroy
   	@artwork = Artwork.find(params[:id])
-    # if @artwork.approved
-    #   flash[:info] = "Sorry, this image has already been approved for auction. Contact Health4All to remove it."
-    #   redirect_to url_for(:controller => :users, :action => :show, :id => session[:user_id])
-    #   return
-    # end
+    if @artwork.approved
+      flash[:info] = "Sorry, this image has already been approved for auction. Contact Health4All to remove it."
+      redirect_to url_for(:controller => :users, :action => :show, :id => session[:user_id])
+      return
+    end
 
     if @artwork.destroy
       flash[:success] = "The picture #{@artwork.name} has been deleted."
