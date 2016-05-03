@@ -28,7 +28,7 @@
     
    Scenario: Not signed in can't see page
      Given I am on the review_index page
-     Then I should see "You are not authorized to view this page."
+     Then I should see "You must be logged in to view this page."
      
     Scenario: Not admin can't see page
       Given the following users
@@ -85,7 +85,7 @@
         And I fill in "descrip" with "my picture"
         When I upload a file
         Given I am on the review_index page
-        Then I should see "Accept"
+        Then I should see "Starting Price"
         
     Scenario: Input start price
         Given the following users
@@ -97,40 +97,15 @@
         And I fill in "session email" with "tafoya77n@yahoo.com"
         And I fill in "session password" with "password"
         And I press "login_button"
-        And I go to the review_index page
-        #And I fill in "startingprice" with "7.00"
-        #And I press "Accept"
-        #Then I should see "7.00"
-    
-    Scenario: Input buy it now price
-        Given the following users
-            | name  | phone      | email              | password |
-            | Nick | 9703062020 | tafoya77n@yahoo.com | password |
-        Given the user "Nick" is activated
-        Given the user "Nick" is an admin
-        Given I am on the login page
-        And I fill in "session email" with "tafoya77n@yahoo.com"
-        And I fill in "session password" with "password"
-        And I press "login_button"
-        And I go to the review_index page
-        #And I fill in "autowinprice" with "7.00"
-        #And I press "Accept"
-        #Then I should see "7.00"
-        
-    Scenario: autowinprice has to be number
-        Given the following users
-            | name  | phone      | email              | password |
-            | Nick | 9703062020 | tafoya77n@yahoo.com | password |
-        Given the user "Nick" is activated
-        Given the user "Nick" is an admin
-        Given I am on the login page
-        And I fill in "session email" with "tafoya77n@yahoo.com"
-        And I fill in "session password" with "password"
-        And I press "login_button"
-        And I go to the review_index page
-        #And I fill in "autowinprice" with "abcdefghijkl;;lkdjf;lkasjdf;lkaj"
-        #And I press "Accept"
-        #Then I should see "Prices must be number amounts"
+        Given I am on the artworks page
+        And I fill in "name" with "test123"
+        And I fill in "descrip" with "my picture"
+        When I upload a file
+        Given I am on the review_index page
+        And I fill in "startingprice" with "7.00"
+        And I fill in "autowinprice" with "9.00"
+        And I press "Accept"
+        Then I should see "Artwork approved!"
         
     Scenario: startingnprice has to be number
         Given the following users
@@ -142,8 +117,30 @@
         And I fill in "session email" with "tafoya77n@yahoo.com"
         And I fill in "session password" with "password"
         And I press "login_button"
+        Given I am on the artworks page
+        And I fill in "name" with "test123"
+        And I fill in "descrip" with "my picture"
+        When I upload a file
         And I go to the review_index page
-        #And I fill in "startingprice" with "abcdefghijkl;;lkdjf;lkasjdf;lkaj"
-        #And I press "Accept"
-        #Then I should see "Prices must be number amounts"
+        And I fill in "startingprice" with "abcdefghijkl;;lkdjf;lkasjdf;lkaj"
+        And I press "Accept"
+        Then I should see "Prices must be number amounts"
         
+        
+    Scenario: test rejected
+        Given the following users
+            | name  | phone      | email              | password |
+            | Nick | 9703062020 | tafoya77n@yahoo.com | password |
+        Given the user "Nick" is activated
+        Given the user "Nick" is an admin
+        Given I am on the login page
+        And I fill in "session email" with "tafoya77n@yahoo.com"
+        And I fill in "session password" with "password"
+        And I press "login_button"
+        Given I am on the artworks page
+        And I fill in "name" with "test123"
+        And I fill in "descrip" with "my picture"
+        When I upload a file
+        And I go to the review_index page
+        And I press "Reject"
+        Then I should see "The artwork test123 was rejected."
