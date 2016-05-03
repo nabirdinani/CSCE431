@@ -39,6 +39,7 @@
 		  	<h1 id="countdown">00:00:00</h1>
 		  </div>
 
+		<% if @artworks.size > 0 %>
 		  <% if @style == "line" %>
 			  <div class="table-responsive line-view">
 	  			<table class="table table-vcenter">
@@ -99,13 +100,7 @@
 				   </tbody>
 	  			</table>
 
-	  			<div class="sort_buttons">
-	  				<br/>
-	  				<br/>
-	  				<p style="font-famiy: 'Courier New', 'Times New Roman'; text-align: center;">Interested in directly helping Health4All?</p>
-	  				<%= link_to "Submit your own Artwork", url_for(:controller => :artworks, :action => :new), id: 'upload_button1', class: "btn btn-primary" %><span> </span>
-				    <%= link_to "Donate to Health4All", "http://hlth4all.org/Donors", id: 'donate_button', class: "btn btn-primary" %>
-	  			</div>
+	  			
 			  </div>
 			  <br/> <br/> <br/>
 			<% else %>
@@ -192,7 +187,17 @@
 	  			
 			  
 
-			  <div class="sort_buttons">
+			 
+
+			<% end %>
+
+			<% else %>
+			<div style="text-align: center;">
+				There is currently no artwork to bid on.
+			</div>
+			<% end %>
+
+			 <div class="sort_buttons">
 	  				<br/>
 	  				<br/>
 	  				<p style="font-famiy: 'Courier New', 'Times New Roman'; text-align: center;">Interested in directly helping Health4All?</p>
@@ -200,8 +205,6 @@
 				    <%= link_to "Donate to Health4All", "http://hlth4all.org/Donors", id: 'donate_button', class: "btn btn-primary" %>
 
 	  			</div>
-
-			<% end %>
 
 			
 			<br />
