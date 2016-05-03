@@ -145,10 +145,6 @@ Feature: Upload files to server
         And I fill in "session password" with "passworD"
         When I press "login_button"
         Then I should not be on the login page
-        Then I should see "Name"
-        Then I should see "Download Link"
-        Then I should see "Description"
-        Then I should see "Submit your own Artwork" 
         Given I am on the artworks page
         And I fill in "name" with "test"
         And I fill in "descrip" with "my picture"

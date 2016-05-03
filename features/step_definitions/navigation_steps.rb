@@ -7,6 +7,7 @@ end
 Given /^the artwork has been approved/ do 
   @artwork = Artwork.first
   @artwork.update_attribute :approved, true
+  @artwork.update_attribute :autowinprice, 10.00
 end
 
 When /^I press the watch button/ do
