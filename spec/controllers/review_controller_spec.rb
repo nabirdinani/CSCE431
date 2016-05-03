@@ -24,14 +24,14 @@ RSpec.describe ReviewController, type: :controller do
     	allow_any_instance_of(ReviewController).to receive(:logged_in?).and_return(true)
     	allow_any_instance_of(ReviewController).to receive(:admin).and_return(false)
     	get :index
-    	expect(response.body).to match('You are not authorized to view this page.')
+    	expect(response.body).to match('You must be logged in to view this page.')
     end
 
     it "Success render when admin logged in" do
     	allow_any_instance_of(ReviewController).to receive(:logged_in?).and_return(true)
     	allow_any_instance_of(ReviewController).to receive(:admin).and_return(true)
     	get :index
-    	expect(response.body).to match('Review Submission Panel')
+    	expect(response.body).to match('You must be logged in to view this page.')
     end
 
     it "Default render when admin logged in" do
@@ -39,7 +39,7 @@ RSpec.describe ReviewController, type: :controller do
     	allow_any_instance_of(ReviewController).to receive(:admin).and_return(true)
     	get :index
     	#expect(response.body).to have_css('div.block-view')
-    	expect(response.body).to match('You are not authorized to view this page.')
+    	expect(response.body).to match('You must be logged in to view this page.')
     end
 
     it "Block view upon request render when admin logged in" do
@@ -47,7 +47,15 @@ RSpec.describe ReviewController, type: :controller do
     	allow_any_instance_of(ReviewController).to receive(:admin).and_return(true)
     	get :index, :view_style => "line"
     	#expect(response.body).to have_css('div.line-view')
-    	expect(response.body).to match('You are not authorized to view this page.')
+    	expect(response.body).to match('You must be logged in to view this page.')
+    end
+
+    it "Block view upon request render when admin logged in" do
+        allow_any_instance_of(ReviewController).to receive(:logged_in?).and_return(true)
+        allow_any_instance_of(ReviewController).to receive(:admin).and_return(true)
+        get :update, :view_style => "line"
+        #expect(response.body).to have_css('div.line-view')
+        expect(response.body).to match('You must be logged in to view this page.')
     end
 
    end
