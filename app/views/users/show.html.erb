@@ -169,7 +169,7 @@
 									           
 									            <span></span>
 									            <% if @hash[artwork2.id] %>
-									            <%= link_to "Unwatch Item", watch_path(:id => artwork2.id), id: 'upload_button3', class: "btn btn-success padded_button_block" %>
+									            	<%= link_to "Unwatch Item", watch_path(:id => artwork2.id), id: 'upload_button3', class: "btn btn-success padded_button_block" %>
 									            <% else %>
 									            	 <%= link_to "Watch Item", watch_path(:id => artwork2.id), id: 'upload_button3', class: "btn btn-success padded_button_block" %>
 									            <% end %>
@@ -247,9 +247,10 @@
 		    if (hours > 12) {
 			    hours -= 12;
 			    ampm = " PM";
-			} else if (hours === 0) {
-			   hours = 12;
+			} else if (hours < 12)  {
 			    ampm =" AM";
+			} else {
+				ampm = " PM";
 			}
 		    m = checkTime(m);
 		    s = checkTime(s);
