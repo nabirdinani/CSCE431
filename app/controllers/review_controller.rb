@@ -27,9 +27,6 @@ class ReviewController < ApplicationController
   def update
     if logged_in?
 
-
-
-
       begin
         @user = User.find(session[:user_id])
         if @user.admin

@@ -1,5 +1,6 @@
 class BidsController < ApplicationController
 	
+  
 
 	def index
   		@bids = Bid.where(:user_id => session[:user_id])
