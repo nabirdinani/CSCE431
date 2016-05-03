@@ -26,11 +26,29 @@ class ReviewController < ApplicationController
 
   def update
     if logged_in?
+
+
+
+
       begin
         @user = User.find(session[:user_id])
         if @user.admin
           @id = params[:id]
           @artwork = Artwork.find(@id)
+          
+          # see if we are rejecting
+          if params[:commit] == "Reject"
+            if @artwork.destroy
+              flash[:success] = "The artwork #{@artwork.name} was rejected."
+              redirect_to review_index_path
+            else
+              flash[:danger] = "Sorry! Something went wrong. Try again."
+              redirect_to review_index_path
+            end
+            return
+          end
+
+
           @artwork.startingprice = params[:startingprice]
           @artwork.autowinprice = params[:autowinprice]
           @artwork.approved = true
@@ -54,12 +72,13 @@ class ReviewController < ApplicationController
             @artwork.openbid = false
           end
 
+          puts params[:commit]
           if @artwork.save!
-            flash[:info] = "Artwork approved!"
-            redirect_to review_index_path
-          else
-            flash[:info] = "Artwork was not updated"
-          end
+             flash[:info] = "Artwork approved!"
+             redirect_to review_index_path
+           else
+             flash[:info] = "Artwork was not updated."
+           end
         end
       rescue ActiveRecord::RecordNotFound => e
         

@@ -25,7 +25,7 @@ class BidsController < ApplicationController
   		end
   		
   		
-  	end
+  end
 
   def is_user_watching(userid, artwork)
     @search_string = userid.to_s
@@ -71,14 +71,12 @@ class BidsController < ApplicationController
 		  flash[:info] = "Your bid was submitted successfully!"
       @prev_bids = Bid.where(:artwork_id => @artwork.id)
       if @prev_bids.size > 1 # someone else has been outbid
-        begin
+        
           @losing = User.find(@prev_bids[@prev_bids.size - 2].user_id)
           if is_user_watching(@losing.id, @artwork)
             @losing.send_outbid_notification_email(@artwork)
           end
-        rescue ActiveRecord::RecordNotFound => e
-
-        end
+      
       end
       if is_user_watching(@user.id, @artwork) 
         @user.send_bid_notification_email(@artwork, @bid)

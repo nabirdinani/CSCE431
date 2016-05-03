@@ -72,8 +72,8 @@
 								  <%= label_tag(:duration, "Duration (minutes)") %>
 								  <%= select_tag :duration, "<option>15</option><option>30</option><option>45</option><option>60</option><option>90</option><option>120</option><option>180</option><option>240</option><option>300</option><option>360</option>".html_safe, class: 'input', :required => true %>
 								  <br/>
-								  <%= submit_tag "Accept", class: "btn btn-success padded_button bid-btn"%>
-								  <%= submit_tag "Reject", class: "btn btn-danger padded_button bid-btn"%>
+								  <%= submit_tag "Accept", name: "commit", class: "btn btn-success padded_button bid-btn"%>
+								  <%= submit_tag "Reject", name: "commit", class: "btn btn-danger padded_button bid-btn"%>
 								<% end %>
 						</div>
 		            	

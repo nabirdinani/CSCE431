@@ -1,11 +1,24 @@
 class SettingsController < ApplicationController
   def show
-  	@user = User.find(params[:id])
+      begin
+        if logged_in?
+        	@user = User.find(params[:id])
+        end
+      rescue ActiveRecord::RecordNotFound => e
+        flash[:danger] = "Something went wrong! Sorry, try again."
+        redirect_to root_url
+      end
   end
 
   def update
   	if logged_in?
-  		@user = User.find(params[:id])
+      begin
+  		  @user = User.find(params[:id])
+      rescue ActiveRecord::RecordNotFound => e
+        flash[:danger] = "Something went wrong! Sorry, try again."
+        redirect_to root_url
+        return
+      end
   		if @user.anon == nil
   			@flip = true
   		else
