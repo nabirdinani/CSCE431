@@ -88,9 +88,9 @@
 				                <%= link_to "More Details", "/artworks/#{artwork.id}", id: 'upload_button1', class: "btn btn-info padded_button" %>
 				                
 				                <% if @hash[artwork.id] %>
-				                	<%= link_to "Unwatch Item", watch_path(:id => artwork.id), id: 'upload_button3', class: "btn btn-success padded_button" %></div></td>
+				                	<%= link_to "Unwatch Item", watch_path(:id => artwork.id), id: "watch_button", class: "btn btn-success padded_button" %></div></td>
 				                <% else %>
-				                	<%= link_to "Watch Item", watch_path(:id => artwork.id), id: 'upload_button3', class: "btn btn-success padded_button" %></div></td>
+				                	<%= link_to "Watch Item", watch_path(:id => artwork.id), id: "watch_button", class: "btn btn-success padded_button" %></div></td>
 				                <% end %>
 				            
 				          </tr>
@@ -153,9 +153,9 @@
 												<%= link_to "More Details", "/artworks/#{artwork1.id}", id: 'upload_button1', class: "btn btn-info padded_button_block" %>
 							            		<span></span>
 							            		<% if @hash[artwork1.id] %>
-									            <%= link_to "Unwatch Item", watch_path(:id => artwork1.id), id: 'upload_button3', class: "btn btn-success padded_button_block" %>
+									            <%= link_to "Unwatch Item", watch_path(:id => artwork1.id), id: "watch_button", class: "btn btn-success padded_button_block" %>
 									            <% else %>
-									            	 <%= link_to "Watch Item", watch_path(:id => artwork1.id), id: 'upload_button3', class: "btn btn-success padded_button_block" %>
+									            	 <%= link_to "Watch Item", watch_path(:id => artwork1.id), id: "watch_button", class: "btn btn-success padded_button_block" %>
 									            <% end %>
 							        		</div>
 							    		</div>
@@ -170,9 +170,9 @@
 									           
 									            <span></span>
 									            <% if @hash[artwork2.id] %>
-									            	<%= link_to "Unwatch Item", watch_path(:id => artwork2.id), id: 'upload_button3', class: "btn btn-success padded_button_block" %>
+									            	<%= link_to "Unwatch Item", watch_path(:id => artwork2.id), id: "watch_button", class: "btn btn-success padded_button_block" %>
 									            <% else %>
-									            	 <%= link_to "Watch Item", watch_path(:id => artwork2.id), id: 'upload_button3', class: "btn btn-success padded_button_block" %>
+									            	 <%= link_to "Watch Item", watch_path(:id => artwork2.id), id: "watch_button", class: "btn btn-success padded_button_block" %>
 									            <% end %>
 									        </div></div>
 								    </div>    
