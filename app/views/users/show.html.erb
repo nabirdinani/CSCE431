@@ -210,6 +210,8 @@
 			<br/>
 			<h3> Submitted art:</h3>
 
+			<% if @artworks.size > 0 %>
+
 			<table class = "table table-bordered table-striped">
 			   <thead>
 			      <tr>
@@ -234,6 +236,13 @@
 			   </tbody>
 			   
 			</table>
+
+			<% else %>
+				You have not submitted any artwork.
+				<br/>
+				<br/>
+				
+			<% end %>
 
 
 
