@@ -53,9 +53,9 @@ RSpec.describe ReviewController, type: :controller do
     it "Block view upon request render when admin logged in" do
         allow_any_instance_of(ReviewController).to receive(:logged_in?).and_return(true)
         allow_any_instance_of(ReviewController).to receive(:admin).and_return(true)
-        get :update, :view_style => "line"
+        put :update, :id => 1
         #expect(response.body).to have_css('div.line-view')
-        expect(response.body).to match('You must be logged in to view this page.')
+        expect(response.body).to match('Update')
     end
 
    end

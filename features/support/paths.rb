@@ -6,6 +6,9 @@ module NavigationHelpers
       '/'
     when /the artworks page/
       '/artworks/new'
+
+    when /the settings page/
+      '/settings/1'
       
     when /^the user info page for "(.*)"$/
       user_path(User.find_by_name($1))
