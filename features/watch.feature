@@ -31,6 +31,12 @@ Feature: The User settings page
         When I am on the user info page for "jason"
         When I click "watch_button"
         Then I should see "You will now receive notifications for this item."
+        When I am on the user info page for "jason"
+        When I click "watch_button"
+        Then I should see "You will no longer receive notifications for this item."
+        When I am on the user info page for "jason"
+        When I click "watch_button"
+        Then I should see "You will now receive notifications for this item."
 
 
 
