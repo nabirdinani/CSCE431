@@ -49,8 +49,11 @@ class WatchController < ApplicationController
   		flash[:danger] = "Could not watch this item. Try again soon."
   end
 
-  redirect_to "/users/#{@userid}"
-
+  if params[:redir] == nil || params[:redir] == true
+    redirect_to "/users/#{@userid}"
+  else
+    redirect_to "/artworks/#{@artwork.id}"
+  end
 
   end
 end

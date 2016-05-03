@@ -24,6 +24,21 @@ class ArtworksController < ApplicationController
       @leadbidder = User.find(@artwork.leadinguser)
       @anon = @leadbidder.anon
     end
+
+    # for watch/unwatch button
+    @hash = Hash.new
+    art = @artwork
+    if art.watchlist != nil
+      if art.watchlist.include? @user.id.to_s
+        @hash[art.id] = true
+      else
+        @hash[art.id] = false
+      end
+    else
+      @hash[art.id] = false
+    end
+  
+
   end
 
   def create

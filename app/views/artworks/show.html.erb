@@ -13,15 +13,21 @@
    </head>
    <body onload="startTime()">
       <h1><%= @artwork.name%></h1>
-      <div>
+      <div style="text-align: center;">
          <br/>
          <input type="hidden" id="opentime" value=<%=@opentime%>>
          <input type="hidden" id="endtime" value=<%=@expiretime%>>
          
           <h2>Remaining time:</h1>
           <h1 type = "hidden" id="item_clock">00:00:00</h1>
-       
-        </div>
+
+          <br/>
+          <% if @hash[@artwork.id] %>
+                          <%= link_to "Unwatch Item", watch_path(:id => @artwork.id, :redir => false), id: 'upload_button3', class: "btn btn-success padded_button" %></td>
+                        <% else %>
+                          <%= link_to "Watch Item", watch_path(:id => @artwork.id, :redir => false), id: 'upload_button3', class: "btn btn-success padded_button" %></td>
+                        <% end %>
+          </div>
 
    <table class="table table-vcenter">
    
