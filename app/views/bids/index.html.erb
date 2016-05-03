@@ -1,25 +1,33 @@
 <% if logged_in? %>
 
 <h1>Bid History</h1>
-<% @hash.each do |art, bidarray| %>
-	<h2><%= art.name %></h2>
-  	<img id="displayed" src=<%= art.attachment_url %>/>
-  	<br/>
-  	<table class="table table-condensed table-nonfluid center-table">
- 	  <tr>	
- 		<th>Amount</th>
- 		<th>Time</th>
- 	  </tr>
- 		<% bidarray.each do |bid| %>
-  		<tr>
-  			<td><%= '$%.2f' % bid.amount %></td>
-  			<td><%= bid.created_at %></td>
-  		</tr>
-  		<% end %>
-	</table>
-	<hr>
 
-<% end %>
+<br/>
+    <% if @hash.length > 0 %>
+      <% @hash.each do |art, bidarray| %>
+      	<h2><%= art.name %></h2>
+        	<img id="displayed" src=<%= art.attachment_url %>/>
+        	<br/>
+        	<table class="table table-condensed table-nonfluid center-table">
+       	  <tr>	
+       		<th>Amount</th>
+       		<th>Time</th>
+       	  </tr>
+       		<% bidarray.each do |bid| %>
+        		<tr>
+        			<td><%= '$%.2f' % bid.amount %></td>
+        			<td><%= bid.created_at %></td>
+        		</tr>
+        		<% end %>
+      	</table>
+      	<hr>
+
+      <% end %>
+    <% else %>
+    <div style="text-align: center;">
+      You have not bid on any items.
+    </div>
+    <% end %>
 
 <% else %>
 	You must login to view this page.
