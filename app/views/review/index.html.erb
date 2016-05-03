@@ -166,3 +166,31 @@
   	</body>
 
  </html>
+ <script type="text/javascript">
+ 	window.onload=function(){
+ 		
+ 		var rejects=document.getElementsByClassName("btn btn-danger padded_button bid-btn")
+ 		for (var j =0;j<rejects.length;j++){
+ 			rejects[j].onclick=function(){
+		 		var inputs=document.getElementsByClassName("input");
+		 		var i;
+		 		for (i = 0; i < inputs.length; i++) {
+		    		inputs[i].required=false;
+				}
+ 			}
+ 		}
+ 		
+ 		var accepts=document.getElementsByClassName("btn btn-success padded_button bid-btn")
+ 		for (var j =0;j<accepts.length;j++){
+ 			accepts[j].onclick=function(){
+		 		var inputs=document.getElementsByClassName("input");
+		 		var i;
+		 		for (i = 0; i < inputs.length; i++) {
+		    		inputs[i].required=true;
+				}
+ 			}
+ 		}
+ 	}
+ 	
+ 	
+ </script>
