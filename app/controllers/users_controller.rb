@@ -12,7 +12,11 @@ class UsersController < ApplicationController
           @active = true
       end
 
-      @artworks = Artwork.where(:userid => session[:user_id])
+      if @user.admin
+        @artworks = Artwork.all
+      else
+        @artworks = Artwork.where(:userid => session[:user_id])
+      end
 
       @style = params[:view_style]
       if (@style == nil) 
