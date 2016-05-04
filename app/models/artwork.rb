@@ -6,4 +6,9 @@ class Artwork < ActiveRecord::Base
   	validates :userid, presence: true
   	
 
+
+    def is_open_to_bid
+        @now =Time.zone.now.to_s(:db)
+        (@now < self.expiretime) && (@now >self.opentime)
+    end
 end
