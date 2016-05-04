@@ -8,6 +8,8 @@ class SettingsController < ApplicationController
         flash[:danger] = "Something went wrong! Sorry, try again."
         redirect_to root_url
       end
+
+      @artworks = Artwork.where(:approved => true)
   end
 
   def update

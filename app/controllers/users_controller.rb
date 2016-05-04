@@ -41,10 +41,11 @@ class UsersController < ApplicationController
 
       @artworksall = @artworksall.to_a
       @artworksall.each do |art|
-        if art.won
+        if art.won || Time.zone.now >= art.expiretime
           @artworksall.delete(art)
         end
       end
+
 
       @hash = Hash.new
       @artworksall.each do |art|

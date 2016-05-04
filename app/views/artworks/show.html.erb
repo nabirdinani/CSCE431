@@ -95,6 +95,9 @@
             </tr>
             <tr>
                <td>
+                    <label for='min_bid'>Starting Price:</label>
+                    <label id='min_bid' type='text'><%='$%.2f' % @artwork.startingprice%></label>
+                    <br/>
                      <label for='current_bid'>Current Bid</label>
                      <label id='current_bid' type='text'>$<%= '%.2f' % @artwork.max_bid%> by 
                         <% if @anyone %>
