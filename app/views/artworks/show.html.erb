@@ -110,9 +110,6 @@
                      </label>
                </td>
                <td class='bid-input'>
-                  <!-- <label for='bid_amount'>Your bid</label> -->
-                  <!-- <input id='bid_amount' type='text' class='bid-amount'></input> -->
-                  <!-- <input name='commit' type='submit' value='Create Bid' class='btn btn-info padded_button bid-btn'/> -->
 
                   <%= form_for ([@artwork, @artwork.bids.build]) do |f| %>
                      <p>
@@ -121,11 +118,10 @@
                      </p>
 
                      <p>
-                        <%= f.submit data: { confirm: 'Are you sure you want to place the bid?' }, class: "btn btn-info padded_button bid-btn"%>
+                        <%= f.submit data: { confirm: 'Are you sure you want to place the bid?' }, class: "btn btn-info padded_button bid-btn", name: 'commit'%>
                      </p>
                   <% end %>
 
-                  <!-- <%= button_to "Create Bid", [@artwork, @artwork.bids.build], name: "commit", class: "btn btn-info padded_button bid-btn"%> -->
                </td>
             </tr>
             <tr>
@@ -138,7 +134,7 @@
 
                </td>
                <td>
-                  <%= link_to "Buy It Now", "#", id: 'buy_now_btn', class: 'btn btn-info padded_button bid-btn' %>
+                  <%= link_to "Buy It Now", "/artworks/#{@artwork.id}/bids", method: :post, id: 'buy_now_btn', class: 'btn btn-info padded_button bid-btn', name: 'commit' %>
                </td>
             </tr>
          
@@ -149,7 +145,7 @@
      
    <div>
       <label for='details'>Details</label>
-      <%= text_area(:artwork, :description, size: "10x5", disabled: 'disabled', id: 'details')%>
+      <%= text_area :artwork, :description, size: "10x3", disabled: 'disabled', id: 'details', class: 'textareabox'%>
    </div>
    <div class="sort_buttons">
       <br/>
@@ -184,7 +180,21 @@
            if (fromStart > 0) {
               clearInterval(timer);
 
-              document.getElementById('item_clock').innerHTML = 'This item will open for bidding at ' + open.getHours() + ':' + open.getMinutes() + ' on ' +open.getMonth() + '/' + open.getDay() + '/'+open.getYear();
+              var _min_ = open.getMinutes();
+              if (_min_ < 10) {
+                _min_ = '0'+_min_;
+              }
+
+              var formath = open.getHours();
+              var formatampm;
+              if (hours < 12) {
+                formatampm = "AM";
+              } else {
+                formath = (formath-12);
+                formatampm = "PM";
+              }
+              
+              document.getElementById('item_clock').innerHTML = 'This item will open for bidding at ' + formath + ':' + _min_ + ' ' + formatampm + ' on ' +(open.getMonth()+1) + '/' + open.getDate() + '/'+open.getFullYear();
               return;
            }
            if (distance < 0) {

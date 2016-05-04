@@ -83,7 +83,6 @@ class ReviewController < ApplicationController
             @artwork.openbid = false
           end
 
-          puts params[:commit]
           if @artwork.save!
              flash[:info] = "Artwork approved!"
              redirect_to review_index_path

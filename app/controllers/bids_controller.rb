@@ -41,77 +41,100 @@ class BidsController < ApplicationController
 	def create
     @user = User.find(session[:user_id])
 		@artwork = Artwork.find(params[:artwork_id])
-		@bid = @artwork.bids.new(params[:bid].permit(:amount))
-		if @artwork.is_open_to_bid
-		  if @artwork.startingprice < @bid.amount
-        if @artwork.max_bid == nil 
-          @artwork.max_bid = @bid.amount
-        else
-          if @artwork.max_bid >= @bid.amount
-            # they just bid below the current price
-            money1 = '%.2f' % @bid.amount
-            money2 = '%.2f' % @artwork.max_bid
-            flash[:danger] = "Your bid of $#{money1} was not above than the current highest bid of $#{money2}!"
-            redirect_to artwork_path(@artwork)
-            return
-          else 
-            @artwork.max_bid = @bid.amount
-          end
-        end
-    
-    
-        if @artwork.autowinprice < @bid.amount
-          flash[:danger] = "You tried to submit a bid that's past the autowin price. Are you sure you meant to do that? Use the 'Buy it now' button if you'd wish to purchase now!"
-          redirect_to artwork_path(@artwork)
-          return
-        end
-  
-  
-        if @artwork.autowinprice < @bid.amount
-          flash[:danger] = "You tried to submit a bid that's past the autowin price. Are you sure you meant to do that? Use the 'Buy it now' button if you'd wish to purchase now!"
-          redirect_to artwork_path(@artwork)
-          return
-        end
-      @artwork.leadinguser = @user.id.to_s
-      @artwork.save
-  		@bid.user_id = session[:user_id]
-  		if @bid.save
-  		  flash[:info] = "Your bid was submitted successfully!"
-        @prev_bids = Bid.where(:artwork_id => @artwork.id)
-        if @prev_bids.size > 1 # someone else has been outbid
 
-            @potent = @prev_bids[@prev_bids.size - 2];
-            if @potent.user_id != nil
-              begin
-                @losing = User.find(@potent.user_id)
+    if @artwork.won
+      flash[:danger] = "This item has already been won."
+      redirect_to user_path(@user)
+      return
+    end
 
-                if is_user_watching(@losing.id, @artwork)
-                  @losing.send_outbid_notification_email(@artwork)
-                end
-              rescue ActiveRecord::RecordNotFound => e
+    if params[:commit] == "Create Bid"
 
+    		@bid = @artwork.bids.new(params[:bid].permit(:amount))
+    		if @artwork.is_open_to_bid
+    		  if @artwork.startingprice < @bid.amount
+            if @artwork.max_bid == nil 
+              @artwork.max_bid = @bid.amount
+            else
+              if @artwork.max_bid >= @bid.amount
+                # they just bid below the current price
+                money1 = '%.2f' % @bid.amount
+                money2 = '%.2f' % @artwork.max_bid
+                flash[:danger] = "Your bid of $#{money1} was not above than the current highest bid of $#{money2}!"
+                redirect_to artwork_path(@artwork)
+                return
+              else 
+                @artwork.max_bid = @bid.amount
               end
             end
         
-        end
-        if is_user_watching(@user.id, @artwork) 
-          @user.send_bid_notification_email(@artwork, @bid)
-        end
         
-        
-      else 
-        flash[:danger] = "Your bid could not be submitted. Try again soon."
+            if @artwork.autowinprice <= @bid.amount
+              flash[:danger] = "You tried to submit a bid that's past or at the autowin price. Are you sure you meant to do that? Use the 'Buy it now' button if you'd wish to purchase now!"
+              redirect_to artwork_path(@artwork)
+              return
+            end
+      
+      
+          @artwork.leadinguser = @user.id.to_s
+          @artwork.save
+      		@bid.user_id = session[:user_id]
+      		if @bid.save
+      		  flash[:info] = "Your bid was submitted successfully!"
+            @prev_bids = Bid.where(:artwork_id => @artwork.id)
+            if @prev_bids.size > 1 # someone else has been outbid
+
+                @potent = @prev_bids[@prev_bids.size - 2];
+                if @potent.user_id != nil
+                  begin
+                    @losing = User.find(@potent.user_id)
+
+                    if is_user_watching(@losing.id, @artwork)
+                      @losing.send_outbid_notification_email(@artwork)
+                    end
+                  rescue ActiveRecord::RecordNotFound => e
+
+                  end
+                end
+            
+            end
+            if is_user_watching(@user.id, @artwork) 
+              @user.send_bid_notification_email(@artwork, @bid)
+            end
+            
+            
+          else 
+            flash[:danger] = "Your bid could not be submitted. Try again soon."
+          end
+        else
+          flash[:danger]="Your bid is not above the minimum bid."
+          redirect_to artwork_path(@artwork) and return
+        end
+      else
+        flash[:danger] = "Artwork is not open to be bid on."
+        redirect_to artwork_path(@artwork) and return
       end
+    		
+    		redirect_to artwork_bids_path(@artwork)
+   
     else
-      flash[:danger]="Your bid is not above the minimum bid."
-      redirect_to artwork_path(@artwork) and return
+      #@bid = @artwork.bids.new(params[:bid].permit(:amount))
+      @bid = @artwork.bids.new
+      @bid.amount = @artwork.max_bid
+      @bid.user_id = @user.id
+      @bid.artwork_id = @artwork.id
+      @artwork.leadinguser = @user.id.to_s
+      @artwork.max_bid = @artwork.autowinprice
+      @artwork.won = true
+      if @bid.save && @artwork.save
+        flash[:success] = "Congratulations! You have won this item."
+        redirect_to "/payments/index"
+      else
+        flash[:danger] = "Sorry! Something went wrong. Try again soon."
+        redirect_to artwork_bids_path(@artwork)
+      end
     end
-  else
-    flash[:danger] = "Artwork is no longer open to be bid on."
-    redirect_to artwork_path(@artwork) and return
+
   end
-		
-		redirect_to artwork_bids_path(@artwork)
-	end
 
 end

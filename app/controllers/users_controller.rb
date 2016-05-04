@@ -39,6 +39,13 @@ class UsersController < ApplicationController
           @artworksall = Artwork.where(:approved => true)
       end
 
+      @artworksall = @artworksall.to_a
+      @artworksall.each do |art|
+        if art.won
+          @artworksall.delete(art)
+        end
+      end
+
       @hash = Hash.new
       @artworksall.each do |art|
         if art.watchlist != nil
