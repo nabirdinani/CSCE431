@@ -34,8 +34,6 @@ class BidsController < ApplicationController
     if @list == nil
       return false
     else
-      puts @list + ":" + @search_string
-      puts @list.include? @search_string
       return @list.include? @search_string
     end
   end

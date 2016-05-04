@@ -29,7 +29,7 @@ RSpec.describe SettingsController, type: :controller do
     it "returns http success" do
       allow_any_instance_of(SettingsController).to receive(:logged_in?).and_return(true)
       get :show, :id => @user.id
-      expect(response).to have_http_status(:redirect)
+      expect(response).to have_http_status(:success)
     end
 
     it "reeturns success on update" do
