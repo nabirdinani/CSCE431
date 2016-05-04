@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   
 
 
+  get 'payment/index'
+
   get 'password_resets/new'
 
   get 'password_resets/edit'

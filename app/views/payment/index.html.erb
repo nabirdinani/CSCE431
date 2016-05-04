@@ -1,0 +1,39 @@
+<% if logged_in? %>
+
+<div style="text-align: center;">
+<h1>Payment Page</h1>
+
+
+
+<br/>
+    <% if @artwork.length > 0 %>
+      Below is a listing of items you have won.<br/><br/>
+      <% @artwork.each do |art| %>
+      	<h2><%= art.name %></h2>
+        	<img id="displayed" src=<%= art.attachment_url %>/>
+        	<br/>
+        	<table class="table table-condensed table-nonfluid center-table">
+       	  <tr>	
+       		<th>Amount</th>
+          <th>Description</th>
+       	  </tr>
+       		
+        		<tr>
+        			<td><%= '$%.2f' % art.max_bid %></td>
+        			<td><%= art.description %></td>
+        		</tr>
+      	</table>
+        <br/>
+        <%= link_to "Submit Payment", "http://hlth4all.org/LinkClick.aspx?link=https%3a%2f%2fwww.paypal.com%2fcgi-bin%2fwebscr%3fcmd%3d_s-xclick%26hosted_button_id%3d86SFRHFSLMLFE&tabid=5892&portalid=47&mid=10656", id: 'submit_payment', class: "submit_but btn btn-success" %>
+      	<hr>
+
+      <% end %>
+    <% else %>
+    <div style="text-align: center;">
+      You have won any items. When you win an item, it will display here.
+    </div>
+    <% end %>
+
+<% else %>
+	You must login to view this page.
+<% end %>

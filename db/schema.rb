@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160502002611) do
+ActiveRecord::Schema.define(version: 20160504040437) do
 
   create_table "artworks", force: :cascade do |t|
     t.string   "name"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20160502002611) do
     t.boolean  "openbid"
     t.string   "watchlist"
     t.string   "leadinguser"
+    t.boolean  "won"
   end
 
   create_table "bids", force: :cascade do |t|
