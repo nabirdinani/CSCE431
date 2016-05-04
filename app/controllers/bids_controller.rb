@@ -41,8 +41,8 @@ class BidsController < ApplicationController
 	def create
     @user = User.find(session[:user_id])
 		@artwork = Artwork.find(params[:artwork_id])
-		@bid = @artwork.bids.create(params[:bid].permit(:amount))
-		if @artwork.is_open_to_bid
+		@bid = @artwork.bids.new(params[:bid].permit(:amount))
+		#if @artwork.is_open_to_bid
       if @artwork.max_bid == nil 
         @artwork.max_bid = @bid.amount
       else
@@ -70,11 +70,26 @@ class BidsController < ApplicationController
   		if @bid.save
   		  flash[:info] = "Your bid was submitted successfully!"
         @prev_bids = Bid.where(:artwork_id => @artwork.id)
+        puts "about to start"
         if @prev_bids.size > 1 # someone else has been outbid
-          
-            @losing = User.find(@prev_bids[@prev_bids.size - 2].user_id)
-            if is_user_watching(@losing.id, @artwork)
-              @losing.send_outbid_notification_email(@artwork)
+            puts "------"
+            puts "checking previous bids"
+
+            @potent = @prev_bids[@prev_bids.size - 2];
+            puts "-----"
+            puts "grabbed 2nd to last"
+            if @potent.user_id != nil
+              begin
+                @losing = User.find(@potent.user_id)
+
+                if is_user_watching(@losing.id, @artwork)
+                  puts "------"
+                  puts "sending loser email"
+                  @losing.send_outbid_notification_email(@artwork)
+                end
+              rescue ActiveRecord::RecordNotFound => e
+
+              end
             end
         
         end
