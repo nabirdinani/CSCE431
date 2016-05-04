@@ -52,7 +52,7 @@ class BidsController < ApplicationController
 
     		@bid = @artwork.bids.new(params[:bid].permit(:amount))
     		if @artwork.is_open_to_bid
-    		  if @artwork.startingprice < @bid.amount
+    		  if @artwork.startingprice <= @bid.amount
             if @artwork.max_bid == nil 
               @artwork.max_bid = @bid.amount
             else
@@ -128,7 +128,7 @@ class BidsController < ApplicationController
       @artwork.won = true
       if @bid.save && @artwork.save
         flash[:success] = "Congratulations! You have won this item."
-        redirect_to "/payments/index"
+        redirect_to "/payment/index"
       else
         flash[:danger] = "Sorry! Something went wrong. Try again soon."
         redirect_to artwork_bids_path(@artwork)

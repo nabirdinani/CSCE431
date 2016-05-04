@@ -46,7 +46,7 @@ class ArtworksController < ApplicationController
     @artwork.userid = session[:user_id]
     @artwork.max_bid = 0
 	  if @artwork.save
-      flash[:success] = "The picture #{@artwork.name} has been submitted."
+      flash[:success] = "The picture #{@artwork.name} has been submitted. It will need to be approved by an admin before it will show up on the big page."
       redirect_to url_for(:controller => :users, :action => :show, :id => session[:user_id])
 	  else
 	    flash[:danger] = "Picture was not uploaded."

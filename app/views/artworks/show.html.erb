@@ -23,23 +23,16 @@
 
           <br/>
           <% if @hash[@artwork.id] %>
-                          <%= link_to "Unwatch Item", watch_path(:id => @artwork.id, :redir => false), id: 'upload_button3', class: "btn btn-success padded_button" %></td>
+                          <%= link_to "Unwatch Item", watch_path(:id => @artwork.id, :redir => false), id: 'upload_button3', class: "move-rightart btn btn-success " %></td>
                         <% else %>
-                          <%= link_to "Watch Item", watch_path(:id => @artwork.id, :redir => false), id: 'upload_button3', class: "btn btn-success padded_button" %></td>
+                          <%= link_to "Watch Item", watch_path(:id => @artwork.id, :redir => false), id: 'upload_button3', class: "move-rightart btn btn-success " %></td>
                         <% end %>
           </div>
+          <hr>
 
-   <table class="table table-vcenter">
-   
-       <tbody>  
-
-               <tr>
-                  <td rowspan ="4"><img src="<%= @artwork.attachment_url %>" id="displayed" /></td>
-               
-               
-            
-
-                  <button type="button" id="denomination5" class="btn btn-success padded_button" 
+  <br/>
+        <div style="text-align: center;">
+            <button type="button" id="denomination5" class="btn btn-success padded_button" 
 
 
                   onclick="var input = parseFloat(document.getElementById('amount_id').value) || 0;
@@ -90,11 +83,18 @@
                    <button type="button" id="reset" class="btn btn-success padded_button" onclick="document.getElementById('amount_id').value = ''">Reset</button>
                   
                  
-               
-               
-            </tr>
-            <tr>
-               <td>
+          </div>
+
+          <div class="row row-container">
+
+                <div class="col-md-6">
+                  <br/><br/>
+                  <br/>
+                  <img src="<%= @artwork.attachment_url %>" id="displayed-art" />
+                </div>
+
+                <div class="col-md-6">
+                    <br/><br/><br/>
                     <label for='min_bid'>Starting Price:</label>
                     <label id='min_bid' type='text'><%='$%.2f' % @artwork.startingprice%></label>
                     <br/>
@@ -111,10 +111,9 @@
                         <% end %>
 
                      </label>
-               </td>
-               <td class='bid-input'>
-
-                  <%= form_for ([@artwork, @artwork.bids.build]) do |f| %>
+                      <br/>
+                     <br/>
+                     <%= form_for ([@artwork, @artwork.bids.build]) do |f| %>
                      <p>
                         <%= f.label :Your_Bid %><br>
                         <%= f.text_field :amount, id: 'amount_id' %>
@@ -124,44 +123,31 @@
                         <%= f.submit data: { confirm: 'Are you sure you want to place the bid?' }, class: "btn btn-info padded_button bid-btn", name: 'commit'%>
                      </p>
                   <% end %>
-
-               </td>
-            </tr>
-            <tr>
-               <td style='text-align:center;'>OR</td>
-            </tr>
-            <tr>
-               <td>
-                  <label for='buy_out_price'>Buy it now price</label>
-                  <label id='buy_out_price' type='text'>$<%= '%.2f' % @artwork.autowinprice%></lable>
-
-               </td>
-               <td>
+                 &nbsp;&nbsp; 
+                 &nbsp;&nbsp; <label for='buy_out_price'>Buy it now price</label>
+                  <label id='buy_out_price' type='text'>$<%= '%.2f' % @artwork.autowinprice%></label>
+                    <br/>
                   <%= link_to "Buy It Now", "/artworks/#{@artwork.id}/bids", method: :post, id: 'buy_now_btn', class: 'btn btn-info padded_button bid-btn', name: 'commit' %>
-               </td>
-            </tr>
+               
+                    <br/><br/>
+
+     &nbsp;&nbsp;  <label for='details'>Details</label>
+     &nbsp;&nbsp;  <%= text_area :artwork, :description, size: "20x5", disabled: 'disabled', class: 'textareabox'%>
+   
+                </div>
          
-
-
-      </tbody>
-   </table>
-     
-   <div>
-      <label for='details'>Details</label>
-      <%= text_area :artwork, :description, size: "10x3", disabled: 'disabled', id: 'details', class: 'textareabox'%>
-   </div>
-   <div class="sort_buttons">
-      <br/>
-      <br/>
-      <%= link_to "Back To Home page", "/users/#{@user.id}", id: 'home_btn', class: "btn btn-primary" %>
-      <br/>
-      <br/>
-   </div>
+   
+    </div>
       
-   <% if @active %>
-       
-   <% else %>
-   <% end %>
+      <div style="text-align: center;">
+      <%= link_to "Back To Home page", "/users/#{@user.id}", id: 'home_btn', class: "btn btn-primary" %>
+    </div>
+      <br/>
+      <br/>
+   
+
+    </div>
+      
 
    </body>
 
@@ -226,3 +212,5 @@
    </script>
 
  </html>
+
+

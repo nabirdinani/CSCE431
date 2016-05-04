@@ -74,7 +74,8 @@
 	<br/>
 	*When you bid, your name will be displayed on the item's detail page. Anonymous mode will conceal your identity.
 	</div>
-	<hr>
+	<br/>
+
 	<% if @user.admin %>
 		<h2>Approved artwork and highest bid:</h2>
 		<% if @artworks.size > 0 %>
@@ -85,6 +86,9 @@
 						<th>Name</th>
 						<th>Highest Bidder</th>
 						<th>Bid Amount</th>
+						<th>Contact Number</th>
+						<th>Email</th>
+						<th>Autowin</th>
 					</tr>
 					<% @artworks.each do |art| %>
 						<tr>
@@ -92,10 +96,22 @@
 							<td><%=art.name%></td>
 							<% if art.leadinguser == nil %>
 								<td>N/A</td>
+								<td><%= '$%.2f' % art.max_bid %></td>
+								<td>N/A</td>
+								<td>N/A</td>
+								<td>No</td>
 							<% else %>
 								<td><%=User.find(art.leadinguser).name%></td>
+								<td><%= '$%.2f' % art.max_bid %></td>
+								<td><%=User.find(art.leadinguser).phone%></td>
+								<td><%=User.find(art.leadinguser).email%></td>
+								<% if art.won %>
+
+									<td>Yes</td>
+								<% else %>
+									<td>No</td>
+								<% end %>
 							<% end %>
-							<td><%= '$%.2f' % art.max_bid %></td>
 						</tr>
 					<% end %>
 				</table>
@@ -103,6 +119,8 @@
 		<% else %>
 			No artwork has been approved.
 		<% end %>
+		
+	<hr>
 
 	<% end %>
 
