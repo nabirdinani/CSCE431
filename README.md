@@ -7,3 +7,5 @@ In order to raise funds for these activities, Health For All hosts many fund rai
 In order to simplify the process at this auction, they have asked us to create a website to streamline the event and make record keeping much easier going forward.
 
 The website works just like ebay, majority of the functionalies is done. Next on the agenda is major UI/UX design and integreation of paypal/google maps for payment and delivery functionality repectively. 
+
+Temporary deployed link on heroku: https://health4all.herokuapp.com/
